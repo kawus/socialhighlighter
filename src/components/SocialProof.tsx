@@ -1,0 +1,144 @@
+"use client";
+
+const mockPosts = [
+  {
+    id: 1,
+    username: "sunday_league_legend",
+    avatar: "SL",
+    image: "goal-celebration",
+    caption: "Top bins from 25 yards out 🎯 Finally got it on video!",
+    likes: 847,
+    comments: 42,
+    timeAgo: "3h",
+  },
+  {
+    id: 2,
+    username: "grassroots_fc",
+    avatar: "GF",
+    image: "team-goal",
+    caption: "Team goal of the season. One touch football 👏",
+    likes: 1243,
+    comments: 89,
+    timeAgo: "5h",
+  },
+  {
+    id: 3,
+    username: "keeper_kings",
+    avatar: "KK",
+    image: "save",
+    caption: "Double save. They thought it was in twice 🧤",
+    likes: 562,
+    comments: 28,
+    timeAgo: "1d",
+  },
+];
+
+export default function SocialProof() {
+  return (
+    <section className="section-padding bg-bg-secondary relative overflow-hidden">
+      <div className="section-container">
+        {/* Section header */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            While You&apos;re Still at the{" "}
+            <span className="text-accent-primary">Pitch</span>
+          </h2>
+          <p className="max-w-2xl mx-auto text-lg text-text-secondary">
+            Share while the hype is alive. Your best moments, getting the recognition they deserve.
+          </p>
+        </div>
+
+        {/* Mock Instagram feed */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {mockPosts.map((post, index) => (
+            <div
+              key={post.id}
+              className="card overflow-hidden animate-fade-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {/* Post header */}
+              <div className="flex items-center gap-3 p-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
+                  {post.avatar}
+                </div>
+                <div className="flex-1">
+                  <p className="font-semibold text-white text-sm">{post.username}</p>
+                  <p className="text-xs text-text-muted">{post.timeAgo} ago</p>
+                </div>
+                <svg className="w-5 h-5 text-text-muted" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                </svg>
+              </div>
+
+              {/* Post image placeholder */}
+              <div className="aspect-square bg-bg-tertiary relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl">
+                    {post.image === "goal-celebration" && "⚽"}
+                    {post.image === "team-goal" && "🎯"}
+                    {post.image === "save" && "🧤"}
+                  </div>
+                </div>
+                {/* Veo watermark */}
+                <div className="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/50 backdrop-blur-sm">
+                  <span className="text-xs font-bold text-white/80">VEO</span>
+                </div>
+              </div>
+
+              {/* Post actions */}
+              <div className="p-4">
+                <div className="flex items-center gap-4 mb-3">
+                  <button className="text-energy-hot">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </button>
+                  <button className="text-white">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  </button>
+                  <button className="text-white">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Likes */}
+                <p className="font-bold text-white text-sm mb-2">
+                  {post.likes.toLocaleString()} likes
+                </p>
+
+                {/* Caption */}
+                <p className="text-sm text-text-secondary">
+                  <span className="font-semibold text-white">{post.username}</span>{" "}
+                  {post.caption}
+                </p>
+
+                {/* Comments */}
+                <p className="text-xs text-text-muted mt-2">
+                  View all {post.comments} comments
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats bar */}
+        <div className="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
+          {[
+            { value: "60s", label: "Average delivery time" },
+            { value: "500+", label: "Beta users" },
+            { value: "10K+", label: "Highlights shared" },
+          ].map((stat, index) => (
+            <div key={index}>
+              <p className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</p>
+              <p className="text-sm text-text-secondary mt-2">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

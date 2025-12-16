@@ -1,0 +1,125 @@
+"use client";
+
+export default function Hero() {
+  const scrollToDemo = () => {
+    document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background gradient glow */}
+      <div className="absolute inset-0 bg-hero-glow opacity-60" />
+
+      {/* Animated gradient orb */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-accent-primary/20 via-accent-secondary/5 to-transparent blur-3xl animate-pulse" />
+
+      {/* Content */}
+      <div className="relative z-10 section-container text-center">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-bg-tertiary border border-white/10">
+          <span className="w-2 h-2 rounded-full bg-accent-primary animate-pulse" />
+          <span className="text-sm font-medium text-text-secondary">
+            Coming Soon
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-up">
+          <span className="block">From Pitch to Post</span>
+          <span className="block text-gradient">in 60 Seconds</span>
+        </h1>
+
+        {/* Subheadline */}
+        <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          Your goals, found by AI, privacy-protected, ready for Instagram—before you leave the pitch.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          <button
+            onClick={scrollToDemo}
+            className="btn-primary text-base"
+          >
+            See How It Works
+          </button>
+          <a href="#pricing" className="btn-secondary text-base">
+            Join Waitlist
+          </a>
+        </div>
+
+        {/* Hero Video/Image Placeholder */}
+        <div className="mt-16 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          <div className="relative max-w-4xl mx-auto">
+            {/* Video frame with glow */}
+            <div className="relative rounded-2xl overflow-hidden bg-bg-secondary border border-white/10 shadow-2xl">
+              {/* Ambient glow */}
+              <div className="absolute -inset-4 bg-gradient-radial from-accent-primary/20 to-transparent blur-2xl opacity-50" />
+
+              {/* Video placeholder */}
+              <div className="relative aspect-video bg-bg-tertiary flex items-center justify-center">
+                {/* Placeholder content - replace with actual video */}
+                <div className="text-center">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
+                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <p className="text-text-secondary text-sm">
+                    Demo video coming soon
+                  </p>
+                </div>
+
+                {/* Simulated video overlay elements */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  {/* Progress bar */}
+                  <div className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden mr-4">
+                    <div className="w-1/3 h-full bg-accent-primary rounded-full" />
+                  </div>
+                  {/* Time */}
+                  <span className="text-xs text-white/60 font-mono">0:24 / 1:12</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating stats cards */}
+            <div className="absolute -right-4 md:-right-12 top-8 p-4 rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.5s" }}>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-accent-primary/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-wider">Delivery</p>
+                  <p className="text-lg font-bold text-white">60 sec</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -left-4 md:-left-12 bottom-8 p-4 rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.6s" }}>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-energy-warm/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-energy-warm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-wider">Privacy</p>
+                  <p className="text-lg font-bold text-white">Face Blur</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2">
+          <div className="w-1 h-2 rounded-full bg-white/40" />
+        </div>
+      </div>
+    </section>
+  );
+}
