@@ -81,10 +81,13 @@ Sports-focused dark theme defined in two places:
 - `IOSNavigationBar.tsx` - Large title + back button
 - `IOSHomeIndicator.tsx` - Bottom home bar
 
+## Deployment & Analytics
+- Hosted on Vercel with GitHub integration (auto-deploys on push)
+- Vercel Analytics enabled via `@vercel/analytics` in `src/app/layout.tsx`
+
 ## Not Yet Implemented
 - Stripe payment integration (preorder button shows alert)
 - Backend/database for form submissions
 - Real video assets (using placeholders)
-- Analytics tracking
 - iOS push/pop slide transitions between demo steps
 - Exit-intent modal for early demo abandonment
