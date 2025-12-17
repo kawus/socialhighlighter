@@ -95,8 +95,8 @@ export default function HighlightReveal({ highlights, onSelect }: HighlightRevea
             `}
             style={{
               transitionDelay: `${index * 100}ms`,
-              ringColor: selectedId === highlight.id ? getHighlightColor(highlight.type) : undefined,
-            }}
+              '--tw-ring-color': selectedId === highlight.id ? getHighlightColor(highlight.type) : undefined,
+            } as React.CSSProperties}
           >
             <div className="flex items-center gap-4">
               {/* Icon */}
