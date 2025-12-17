@@ -259,15 +259,25 @@ export default function Demo() {
             </div>
           )}
 
-          {/* CTA after completing demo */}
-          {currentStep === 3 && (
-            <div className="mt-12 text-center">
-              <p className="text-xl text-text-secondary mb-6">Want this for your matches?</p>
-              <a href="#pricing" className="btn-primary text-lg">
+          {/* Always visible CTA */}
+          <div className="mt-12 text-center">
+            <p className="text-lg text-text-secondary mb-4">Want the full experience?</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="/try"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-white/90 transition-all hover:scale-105"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Try Interactive Demo
+              </a>
+              <a href="#pricing" className="btn-secondary text-lg">
                 Get Early Access
               </a>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

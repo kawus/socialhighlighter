@@ -13,9 +13,13 @@ npm run lint     # Run ESLint
 
 ## Architecture
 
-Single-page landing page for Social Highlighter (Veo product). Built with Next.js 15 App Router.
+Landing page + interactive demo for Social Highlighter (Veo product). Built with Next.js 15 App Router.
 
-### Page Structure
+### Routes
+- `/` - Landing page with sections composed in `src/app/page.tsx`
+- `/try` - Immersive 7-step interactive demo (iOS-style UI)
+
+### Landing Page Structure
 `src/app/page.tsx` composes sections in order:
 1. Hero - Headline, video placeholder, floating stat cards
 2. Problem - 5-step narrative showing user pain points
@@ -24,6 +28,20 @@ Single-page landing page for Social Highlighter (Veo product). Built with Next.j
 5. Pricing - Two-tier CTA (£4.99 preorder deposit + free waitlist)
 6. FAQ - Expandable accordion
 7. Footer
+
+### Interactive Demo (`/try`)
+Full-screen iOS-style demo experience at `src/app/try/`. 7-step flow:
+1. Welcome - App intro with "Start Demo" CTA
+2. Match Selection - Choose from 3 mock matches
+3. AI Processing - Animated progress ring (4.5s)
+4. Highlight Reveal - Timeline + 3 highlight cards
+5. Blur Preview - Face blur toggle demonstration
+6. Share Sheet - Instagram share simulation
+7. Success - Confetti + £4.99 founding member CTA
+
+**Responsive presentation:**
+- Mobile: Full-screen native iOS feel
+- Desktop: Wrapped in iPhone 15 Pro frame with Dynamic Island
 
 ### Design System
 Sports-focused dark theme defined in two places:
@@ -40,12 +58,33 @@ Sports-focused dark theme defined in two places:
 - `.text-gradient` - Green-to-cyan gradient text
 
 ### Key Components
+
+**Landing Page (`src/components/`):**
 - `Demo.tsx` - Stateful component with 3-step flow, highlight selection, blur toggle
 - `Pricing.tsx` - Form state management, success state after submission
 - `FAQ.tsx` - Accordion with single-open behavior
+
+**Interactive Demo (`src/components/demo/`):**
+- `DemoPage.tsx` - Orchestrator managing 7-step state
+- `DemoWelcome.tsx` - Welcome screen with gradient orb animation
+- `MatchSelector.tsx` - 3 match cards with selection state
+- `AIProcessing.tsx` - Circular progress ring with dynamic messages
+- `HighlightReveal.tsx` - Timeline + staggered card reveal
+- `BlurPreview.tsx` - Video placeholder with face blur toggle
+- `ShareSheet.tsx` - Instagram-style share UI
+- `DemoSuccess.tsx` - Confetti celebration + conversion CTAs
+- `constants.ts` - Mock data for matches and highlights
+
+**iOS Components (`src/components/ios/`):**
+- `IPhoneFrame.tsx` - iPhone 15 Pro bezel wrapper (desktop only)
+- `IOSStatusBar.tsx` - Time, cellular, WiFi, battery icons
+- `IOSNavigationBar.tsx` - Large title + back button
+- `IOSHomeIndicator.tsx` - Bottom home bar
 
 ## Not Yet Implemented
 - Stripe payment integration (preorder button shows alert)
 - Backend/database for form submissions
 - Real video assets (using placeholders)
 - Analytics tracking
+- iOS push/pop slide transitions between demo steps
+- Exit-intent modal for early demo abandonment
