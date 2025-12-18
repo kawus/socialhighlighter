@@ -47,14 +47,14 @@ export default function FAQ() {
     <section className="section-padding bg-bg-secondary">
       <div className="section-container">
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
             Questions? <span className="text-text-secondary">Answers.</span>
           </h2>
         </div>
 
         {/* FAQ list */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3 md:space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
@@ -62,9 +62,9 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="w-full flex items-center justify-between p-4 md:p-6 text-left"
               >
-                <span className="font-semibold text-lg pr-4">{faq.question}</span>
+                <span className="font-semibold text-base md:text-lg pr-4">{faq.question}</span>
                 <svg
                   className={`w-5 h-5 flex-shrink-0 text-accent-primary transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : ""
@@ -88,7 +88,7 @@ export default function FAQ() {
                   openIndex === index ? "max-h-96" : "max-h-0"
                 }`}
               >
-                <div className="px-6 pb-6 text-text-secondary">
+                <div className="px-4 pb-4 md:px-6 md:pb-6 text-sm md:text-base text-text-secondary">
                   {faq.answer}
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function FAQ() {
         </div>
 
         {/* Still have questions? */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 md:mt-12 text-center">
           <p className="text-text-secondary mb-4">Still have questions?</p>
           <a
             href="mailto:support@veo.co"

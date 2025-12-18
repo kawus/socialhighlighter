@@ -82,22 +82,22 @@ export default function Demo() {
 
       <div className="section-container relative z-10">
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-6">
             See the <span className="text-gradient">Magic</span> in Action
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-text-secondary">
+          <p className="hidden md:block max-w-2xl mx-auto text-lg text-text-secondary">
             Try it yourself. This is exactly how it works.
           </p>
         </div>
 
         {/* Step indicator */}
-        <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center gap-2 md:gap-4 mb-8 md:mb-12">
           {[1, 2, 3].map((step) => (
             <button
               key={step}
               onClick={() => setCurrentStep(step as DemoStep)}
-              className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300
+              className={`flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-3 rounded-full transition-all duration-300
                 ${currentStep === step
                   ? "bg-accent-primary text-black font-bold"
                   : "bg-bg-tertiary text-text-secondary hover:bg-bg-tertiary/80"
@@ -115,11 +115,11 @@ export default function Demo() {
         {/* Demo container */}
         <div className="max-w-5xl mx-auto">
           {/* Current step info */}
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3">
+          <div className="text-center mb-6 md:mb-8">
+            <h3 className="text-xl md:text-3xl font-bold md:mb-3">
               {stepInfo[currentStep].title}
             </h3>
-            <p className="text-text-secondary max-w-xl mx-auto">
+            <p className="hidden md:block text-text-secondary max-w-xl mx-auto">
               {stepInfo[currentStep].description}
             </p>
           </div>
@@ -198,8 +198,8 @@ export default function Demo() {
               </div>
 
               {/* Timeline - Step 1 */}
-              <div className="p-6 border-t border-white/10">
-                <div className="flex items-center gap-4 mb-4">
+              <div className="p-4 md:p-6 border-t border-white/10">
+                <div className="flex items-center gap-4 mb-3 md:mb-4">
                   <span className="text-xs text-text-muted uppercase tracking-wider">Match Timeline</span>
                   <div className="flex-1 h-px bg-white/10" />
                   <span className="text-xs text-text-muted font-mono">90:00</span>
@@ -228,7 +228,7 @@ export default function Demo() {
                 </div>
 
                 {/* Highlight legend */}
-                <div className="flex items-center justify-center gap-6 mt-6">
+                <div className="flex items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6">
                   {[
                     { type: "goal", label: "Goals", color: "bg-energy-warm" },
                     { type: "assist", label: "Assists", color: "bg-accent-primary" },
@@ -246,7 +246,7 @@ export default function Demo() {
 
           {/* Next step prompt */}
           {currentStep < 3 && (
-            <div className="mt-8 text-center">
+            <div className="mt-6 md:mt-8 text-center">
               <button
                 onClick={() => setCurrentStep((currentStep + 1) as DemoStep)}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-bg-tertiary text-white font-semibold hover:bg-bg-tertiary/80 transition-colors"
@@ -260,8 +260,8 @@ export default function Demo() {
           )}
 
           {/* Always visible CTA */}
-          <div className="mt-12 text-center">
-            <p className="text-lg text-text-secondary mb-4">Want the full experience?</p>
+          <div className="mt-8 md:mt-12 text-center">
+            <p className="hidden md:block text-lg text-text-secondary mb-4">Want the full experience?</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="/try"

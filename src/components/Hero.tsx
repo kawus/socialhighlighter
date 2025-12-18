@@ -6,7 +6,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient glow */}
       <div className="absolute inset-0 bg-hero-glow opacity-60" />
 
@@ -30,7 +30,7 @@ export default function Hero() {
         </h1>
 
         {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+        <p className="max-w-2xl mx-auto text-base md:text-xl text-text-secondary mb-8 md:mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           Your goals, found by AI, privacy-protected, ready for Instagram—before you leave the pitch.
         </p>
 
@@ -48,7 +48,7 @@ export default function Hero() {
         </div>
 
         {/* Hero Video/Image Placeholder */}
-        <div className="mt-16 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+        <div className="mt-10 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>
           <div className="relative max-w-4xl mx-auto">
             {/* Video frame with glow */}
             <div className="relative rounded-2xl overflow-hidden bg-bg-secondary border border-white/10 shadow-2xl">
@@ -82,31 +82,31 @@ export default function Hero() {
             </div>
 
             {/* Floating stats cards */}
-            <div className="absolute -right-4 md:-right-12 top-8 p-4 rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.5s" }}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-accent-primary/20 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="absolute right-1 md:-right-12 top-4 md:top-8 p-2 md:p-4 rounded-lg md:rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.5s" }}>
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-accent-primary/20 flex items-center justify-center">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wider">Delivery</p>
-                  <p className="text-lg font-bold text-white">60 sec</p>
+                  <p className="text-[10px] md:text-xs text-text-muted uppercase tracking-wider">Delivery</p>
+                  <p className="text-sm md:text-lg font-bold text-white">60 sec</p>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -left-4 md:-left-12 bottom-8 p-4 rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.6s" }}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-energy-warm/20 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-energy-warm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="absolute left-1 md:-left-12 bottom-4 md:bottom-8 p-2 md:p-4 rounded-lg md:rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.6s" }}>
+              <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-energy-warm/20 flex items-center justify-center">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-energy-warm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wider">Privacy</p>
-                  <p className="text-lg font-bold text-white">Face Blur</p>
+                  <p className="text-[10px] md:text-xs text-text-muted uppercase tracking-wider">Privacy</p>
+                  <p className="text-sm md:text-lg font-bold text-white">Face Blur</p>
                 </div>
               </div>
             </div>

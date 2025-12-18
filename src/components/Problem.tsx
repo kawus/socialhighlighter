@@ -45,12 +45,12 @@ export default function Problem() {
 
       <div className="section-container relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16 md:mb-24">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="text-center mb-10 md:mb-24">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-6">
             Your Best Goal{" "}
             <span className="text-energy-hot">Deserves Better</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-text-secondary">
+          <p className="hidden md:block max-w-2xl mx-auto text-lg text-text-secondary">
             Sound familiar? Here&apos;s what happens every time you score something worth sharing.
           </p>
         </div>
@@ -60,16 +60,16 @@ export default function Problem() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative flex items-start gap-6 mb-12 last:mb-0"
+              className="relative flex items-start gap-4 md:gap-6 mb-8 md:mb-12 last:mb-0"
             >
               {/* Connector line */}
               {index < steps.length - 1 && (
-                <div className="absolute left-8 top-16 w-0.5 h-full bg-gradient-to-b from-white/20 to-transparent" />
+                <div className="absolute left-6 md:left-8 top-12 md:top-16 w-0.5 h-full bg-gradient-to-b from-white/20 to-transparent" />
               )}
 
               {/* Icon */}
               <div
-                className={`flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl
+                className={`flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-2xl
                   ${index === steps.length - 1 ? "bg-energy-hot/20" : "bg-bg-tertiary"}
                   border border-white/10`}
               >
@@ -78,10 +78,10 @@ export default function Problem() {
 
               {/* Content */}
               <div className="flex-1 pt-2">
-                <h3 className="text-xl md:text-2xl font-bold mb-2">
+                <h3 className="text-xl md:text-2xl font-bold md:mb-2">
                   {step.title}
                 </h3>
-                <p className="text-text-secondary">{step.description}</p>
+                <p className="hidden md:block text-text-secondary">{step.description}</p>
               </div>
 
               {/* Step number */}

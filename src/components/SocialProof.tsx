@@ -38,22 +38,22 @@ export default function SocialProof() {
     <section className="section-padding bg-bg-secondary relative overflow-hidden">
       <div className="section-container">
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-6">
             While You&apos;re Still at the{" "}
             <span className="text-accent-primary">Pitch</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-text-secondary">
+          <p className="hidden md:block max-w-2xl mx-auto text-lg text-text-secondary">
             Share while the hype is alive. Your best moments, getting the recognition they deserve.
           </p>
         </div>
 
-        {/* Mock Instagram feed */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {/* Mock Instagram feed - horizontal scroll on mobile, grid on desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 max-w-5xl mx-auto -mx-6 px-6 md:mx-auto md:px-0">
           {mockPosts.map((post, index) => (
             <div
               key={post.id}
-              className="card overflow-hidden animate-fade-up"
+              className="card overflow-hidden animate-fade-up flex-shrink-0 w-[70vw] snap-center md:w-auto md:flex-shrink"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Post header */}
@@ -126,15 +126,15 @@ export default function SocialProof() {
         </div>
 
         {/* Stats bar */}
-        <div className="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
+        <div className="mt-10 md:mt-16 grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto text-center">
           {[
-            { value: "60s", label: "Average delivery time" },
+            { value: "60s", label: "Delivery time" },
             { value: "500+", label: "Beta users" },
-            { value: "10K+", label: "Highlights shared" },
+            { value: "10K+", label: "Highlights" },
           ].map((stat, index) => (
             <div key={index}>
-              <p className="text-3xl md:text-4xl font-bold text-gradient">{stat.value}</p>
-              <p className="text-sm text-text-secondary mt-2">{stat.label}</p>
+              <p className="text-2xl md:text-4xl font-bold text-gradient">{stat.value}</p>
+              <p className="text-xs md:text-sm text-text-secondary mt-1 md:mt-2">{stat.label}</p>
             </div>
           ))}
         </div>

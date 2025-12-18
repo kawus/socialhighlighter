@@ -57,20 +57,20 @@ export default function Pricing() {
 
       <div className="section-container relative z-10">
         {/* Section header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-6">
             Be First to Get Your{" "}
             <span className="text-gradient">Highlights</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-text-secondary">
+          <p className="hidden md:block max-w-2xl mx-auto text-lg text-text-secondary">
             Join now and be among the first to experience instant highlights.
           </p>
         </div>
 
         {/* Pricing cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {/* Founding Member - Primary */}
-          <div className="relative card p-8 border-accent-primary/30">
+          <div className="relative card p-5 md:p-8 border-accent-primary/30">
             {/* Popular badge */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent-primary text-black text-sm font-bold">
               Recommended
@@ -80,19 +80,19 @@ export default function Pricing() {
             <div className="absolute inset-0 rounded-2xl bg-card-glow opacity-50" />
 
             <div className="relative">
-              <h3 className="text-2xl font-bold mb-2">Founding Member</h3>
-              <p className="text-text-secondary mb-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-2">Founding Member</h3>
+              <p className="text-sm md:text-base text-text-secondary mb-4 md:mb-6">
                 Lock in early access with a fully refundable deposit.
               </p>
 
               {/* Price */}
-              <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-5xl font-bold">£4.99</span>
+              <div className="flex items-baseline gap-2 mb-4 md:mb-6">
+                <span className="text-4xl md:text-5xl font-bold">£4.99</span>
                 <span className="text-text-muted">deposit</span>
               </div>
 
               {/* Benefits */}
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 {[
                   "First access when we launch",
                   "3 months of unlimited highlights FREE",
@@ -120,19 +120,19 @@ export default function Pricing() {
           </div>
 
           {/* Free Waitlist - Secondary */}
-          <div className="card p-8">
-            <h3 className="text-2xl font-bold mb-2">Free Waitlist</h3>
-            <p className="text-text-secondary mb-6">
+          <div className="card p-5 md:p-8">
+            <h3 className="text-xl md:text-2xl font-bold mb-2">Free Waitlist</h3>
+            <p className="text-sm md:text-base text-text-secondary mb-4 md:mb-6">
               Not ready to commit? No worries—join the free waitlist.
             </p>
 
             {/* Price */}
-            <div className="flex items-baseline gap-2 mb-6">
-              <span className="text-5xl font-bold">Free</span>
+            <div className="flex items-baseline gap-2 mb-4 md:mb-6">
+              <span className="text-4xl md:text-5xl font-bold">Free</span>
             </div>
 
             {/* Benefits */}
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
               {[
                 "Email notification when we launch",
                 "Early access (after Founding Members)",
@@ -184,9 +184,9 @@ export default function Pricing() {
         </div>
 
         {/* Trust signals */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 md:mt-12 text-center">
           <p className="text-text-muted text-sm mb-4">Trusted by players from</p>
-          <div className="flex items-center justify-center gap-8 opacity-50">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 opacity-50">
             {/* Placeholder for club logos */}
             {["Sunday League", "5-a-side", "Amateur FC"].map((club) => (
               <span key={club} className="text-text-secondary font-medium">

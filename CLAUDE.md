@@ -56,6 +56,26 @@ Sports-focused dark theme defined in two places:
 - `.card` - Card with hover lift and border glow
 - `.section-container`, `.section-padding` - Layout utilities
 - `.text-gradient` - Green-to-cyan gradient text
+- `.scrollbar-hide` - Hide scrollbar for horizontal scroll containers
+
+### Mobile Optimization Patterns
+Landing page is optimized for mobile-first viewing:
+
+**Content compression (mobile):**
+- Section descriptions hidden via `hidden md:block`
+- Problem section: Headlines only, body text hidden
+- Demo section: Step titles only, descriptions hidden
+- Reduced spacing: `mb-8 md:mb-12`, `p-4 md:p-6` patterns
+
+**SocialProof horizontal scroll (mobile):**
+- Grid on desktop (`md:grid-cols-3`), horizontal scroll on mobile
+- Cards at 70% viewport width with snap-to-center
+- Uses `.scrollbar-hide` for clean appearance
+
+**Responsive sizing:**
+- Floating stat cards: Smaller on mobile (`p-2`, `w-8 h-8` icons)
+- Problem icons: `w-12 h-12` mobile, `w-16 h-16` desktop
+- Hero: `min-h-[85vh]` mobile, `min-h-screen` desktop
 
 ### Key Components
 
