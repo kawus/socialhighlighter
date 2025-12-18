@@ -102,8 +102,10 @@ export default function DemoPage() {
   // Screen content wrapper
   const ScreenContent = () => (
     <div className="relative flex flex-col h-full bg-black">
-      {/* iOS Status Bar */}
-      <IOSStatusBar />
+      {/* iOS Status Bar - hidden on mobile (device has its own) */}
+      <div className="hidden md:block">
+        <IOSStatusBar />
+      </div>
 
       {/* Navigation Bar (conditional) */}
       {showNavBar && (

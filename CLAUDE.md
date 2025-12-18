@@ -77,7 +77,7 @@ Sports-focused dark theme defined in two places:
 
 **iOS Components (`src/components/ios/`):**
 - `IPhoneFrame.tsx` - iPhone 15 Pro bezel wrapper (desktop only)
-- `IOSStatusBar.tsx` - Time, cellular, WiFi, battery icons
+- `IOSStatusBar.tsx` - Time, cellular, WiFi, battery icons (desktop only, hidden on mobile to avoid duplicate with native status bar)
 - `IOSNavigationBar.tsx` - Large title + back button
 - `IOSHomeIndicator.tsx` - Bottom home bar
 
