@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-bg-primary">
       <Hero />
+      <SocialProof />
       <Problem />
       <Demo />
-      <SocialProof />
       <Pricing />
       <FAQ />
       <Footer />

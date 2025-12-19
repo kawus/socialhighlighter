@@ -6,6 +6,7 @@ export default function Pricing() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [clubName, setClubName] = useState("");
+  const [role, setRole] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -27,7 +28,7 @@ export default function Pricing() {
 
   if (submitted) {
     return (
-      <section id="pricing" className="section-padding bg-bg-primary relative overflow-hidden">
+      <section id="early-access" className="section-padding bg-bg-primary relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-accent-primary/20 to-transparent blur-3xl" />
 
         <div className="section-container relative z-10 text-center">
@@ -51,7 +52,7 @@ export default function Pricing() {
   }
 
   return (
-    <section id="pricing" className="section-padding bg-bg-primary relative overflow-hidden">
+    <section id="early-access" className="section-padding bg-bg-primary relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-accent-primary/10 to-transparent blur-3xl" />
 
@@ -59,8 +60,8 @@ export default function Pricing() {
         {/* Section header */}
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-6">
-            Be First to Get Your{" "}
-            <span className="text-gradient">Highlights</span>
+            Choose how early you{" "}
+            <span className="text-gradient">want in</span>
           </h2>
           <p className="hidden md:block max-w-2xl mx-auto text-lg text-text-secondary">
             Join now and be among the first to experience instant highlights.
@@ -86,10 +87,13 @@ export default function Pricing() {
               </p>
 
               {/* Price */}
-              <div className="flex items-baseline gap-2 mb-4 md:mb-6">
+              <div className="flex items-baseline gap-2 mb-2">
                 <span className="text-4xl md:text-5xl font-bold">£4.99</span>
                 <span className="text-text-muted">deposit</span>
               </div>
+              <p className="text-sm text-text-secondary mb-4 md:mb-6">
+                The deposit helps us prioritize early access for committed testers.
+              </p>
 
               {/* Benefits */}
               <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
@@ -109,7 +113,11 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button onClick={handlePreorder} className="btn-primary w-full text-center">
+              <button
+                onClick={handlePreorder}
+                className="btn-primary w-full text-center"
+                data-event="pricing_click_founding_member"
+              >
                 Reserve My Spot — £4.99
               </button>
 
@@ -157,14 +165,17 @@ export default function Pricing() {
                 required
                 className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
               />
-              <input
-                type="text"
-                placeholder="First name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+              <select
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
-              />
+                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white focus:border-accent-primary focus:outline-none transition-colors appearance-none"
+              >
+                <option value="" disabled className="text-text-muted">Select your role</option>
+                <option value="player">Player</option>
+                <option value="parent">Parent</option>
+                <option value="coach">Coach</option>
+              </select>
               <input
                 type="text"
                 placeholder="Club name (optional)"
@@ -172,16 +183,34 @@ export default function Pricing() {
                 onChange={(e) => setClubName(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
               />
+              <input
+                type="text"
+                placeholder="First name (optional)"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
+              />
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className="btn-secondary w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
+                data-event="pricing_submit_waitlist"
               >
-                {isSubmitting ? "Joining..." : "Join Free Waitlist"}
+                {isSubmitting ? "Requesting..." : "Request early access"}
               </button>
             </form>
+
+            {/* Reassurance */}
+            <p className="text-xs text-text-muted text-center mt-4">
+              No spam. One email when you can try it.
+            </p>
           </div>
         </div>
+
+        {/* Reassurance below cards */}
+        <p className="text-sm text-text-muted text-center mt-6">
+          No spam. One email when you can try it.
+        </p>
 
         {/* Trust signals */}
         <div className="mt-8 md:mt-12 text-center">

@@ -49,6 +49,7 @@ export default function SocialProof() {
         </div>
 
         {/* Mock Instagram feed - horizontal scroll on mobile, grid on desktop */}
+        <p className="text-xs text-text-muted text-center mb-4">Examples</p>
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 max-w-5xl mx-auto -mx-6 px-6 md:mx-auto md:px-0">
           {mockPosts.map((post, index) => (
             <div
@@ -129,7 +130,7 @@ export default function SocialProof() {
         <div className="mt-10 md:mt-16 grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto text-center">
           {[
             { value: "60s", label: "Delivery time" },
-            { value: "500+", label: "Beta users" },
+            { value: "500+", label: "Beta users (incl. UK grassroots)" },
             { value: "10K+", label: "Highlights" },
           ].map((stat, index) => (
             <div key={index}>
@@ -138,6 +139,9 @@ export default function SocialProof() {
             </div>
           ))}
         </div>
+        <p className="text-xs text-text-muted text-center mt-4">
+          Counts shown are from early internal/beta testing; details shared on request.
+        </p>
       </div>
     </section>
   );

@@ -5,6 +5,10 @@ export default function Hero() {
     document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToEarlyAccess = () => {
+    document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient glow */}
@@ -19,7 +23,7 @@ export default function Hero() {
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-bg-tertiary border border-white/10">
           <span className="w-2 h-2 rounded-full bg-accent-primary animate-pulse" />
           <span className="text-sm font-medium text-text-secondary">
-            Coming Soon
+            Early access
           </span>
         </div>
 
@@ -31,21 +35,31 @@ export default function Hero() {
 
         {/* Subheadline */}
         <p className="max-w-2xl mx-auto text-base md:text-xl text-text-secondary mb-8 md:mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Your goals, found by AI, privacy-protected, ready for Instagram—before you leave the pitch.
+          We turn your best moments into shareable highlight clips—ready while you&apos;re still at the pitch.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           <button
             onClick={scrollToDemo}
-            className="btn-primary text-base"
+            className="btn-secondary text-base"
+            data-event="cta_see_how_it_works"
           >
             See How It Works
           </button>
-          <a href="#pricing" className="btn-secondary text-base">
-            Join Waitlist
-          </a>
+          <button
+            onClick={scrollToEarlyAccess}
+            className="btn-primary text-base"
+            data-event="cta_request_early_access"
+          >
+            Request early access
+          </button>
         </div>
+
+        {/* Microcopy */}
+        <p className="text-sm text-text-muted mt-4 animate-fade-up" style={{ animationDelay: "0.25s" }}>
+          We&apos;ll ask a few questions to see if it&apos;s a good fit. No obligation.
+        </p>
 
         {/* Hero Video/Image Placeholder */}
         <div className="mt-10 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>
@@ -57,26 +71,19 @@ export default function Hero() {
 
               {/* Video placeholder */}
               <div className="relative aspect-video bg-bg-tertiary flex items-center justify-center">
-                {/* Placeholder content - replace with actual video */}
+                {/* Placeholder content */}
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
-                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-accent-primary/20 flex items-center justify-center backdrop-blur-sm border border-accent-primary/30">
+                    <svg className="w-8 h-8 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <p className="text-text-secondary text-sm">
-                    Demo video coming soon
+                  <p className="text-white font-semibold mb-1">
+                    Get invited to the demo
                   </p>
-                </div>
-
-                {/* Simulated video overlay elements */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  {/* Progress bar */}
-                  <div className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden mr-4">
-                    <div className="w-1/3 h-full bg-accent-primary rounded-full" />
-                  </div>
-                  {/* Time */}
-                  <span className="text-xs text-white/60 font-mono">0:24 / 1:12</span>
+                  <p className="text-text-muted text-sm">
+                    See your highlights in action
+                  </p>
                 </div>
               </div>
             </div>

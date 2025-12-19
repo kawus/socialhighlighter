@@ -6,12 +6,22 @@ const faqs = [
   {
     question: "Is this real or just a concept?",
     answer:
-      "This is a real product in development by Veo, makers of AI-powered sports cameras used by thousands of clubs worldwide. We're building Social Highlighter based on the same proven technology that powers our match analysis platform.",
+      "Yes. We're building it now. The tech is from Veo, which already powers match analysis for thousands of clubs.",
+  },
+  {
+    question: "What happens after I request early access?",
+    answer:
+      "We'll email a small number of UK testers first, then expand.",
+  },
+  {
+    question: "What will it cost?",
+    answer:
+      "We're testing pricing with early users; founding members get 3 months free.",
   },
   {
     question: "What if it doesn't work as shown?",
     answer:
-      "Your £4.99 deposit is 100% refundable anytime before launch—no questions asked. If the final product doesn't meet your expectations, you get your money back. We're confident you'll love it.",
+      "Your £4.99 deposit is 100% refundable anytime before launch—no questions asked. If the final product doesn't meet your expectations, you get your money back.",
   },
   {
     question: "When will it launch?",

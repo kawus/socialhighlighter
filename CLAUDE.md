@@ -21,12 +21,12 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 
 ### Landing Page Structure
 `src/app/page.tsx` composes sections in order:
-1. Hero - Headline, video placeholder, floating stat cards
-2. Problem - 5-step narrative showing user pain points
-3. Demo - Interactive 3-step demo (timeline, face blur toggle, share simulation)
-4. SocialProof - Mock Instagram posts with engagement
-5. Pricing - Two-tier CTA (£4.99 preorder deposit + free waitlist)
-6. FAQ - Expandable accordion
+1. Hero - "Early access" badge, headline, CTAs ("See How It Works" → `#demo`, "Request early access" → `#early-access`), video placeholder, floating stat cards
+2. SocialProof - Example IG posts, stats bar with footnote (moved up for proof-first approach)
+3. Problem - 5-step narrative showing user pain points
+4. Demo (`#demo`) - Instruction line, interactive 3-step demo (timeline, face blur toggle, share simulation), "Get clips like this" CTA
+5. Pricing (`#early-access`) - Two-tier CTA (Founding Member £4.99 deposit + Free Waitlist with Role dropdown)
+6. FAQ - Expandable accordion with trust-focused answers
 7. Footer
 
 ### Interactive Demo (`/try`)
@@ -80,9 +80,11 @@ Landing page is optimized for mobile-first viewing:
 ### Key Components
 
 **Landing Page (`src/components/`):**
-- `Demo.tsx` - Stateful component with 3-step flow, highlight selection, blur toggle
-- `Pricing.tsx` - Form state management, success state after submission
-- `FAQ.tsx` - Accordion with single-open behavior
+- `Hero.tsx` - "Early access" badge, dual CTAs with anchor scroll, video placeholder
+- `SocialProof.tsx` - Example IG posts with "Examples" label, stats bar with transparency footnote
+- `Demo.tsx` - Instruction line, 3-step flow with `data-event` tracking, "Get clips like this" CTA
+- `Pricing.tsx` - Founding Member + Free Waitlist cards, Role dropdown (Player/Parent/Coach), `#early-access` anchor
+- `FAQ.tsx` - Accordion with trust-focused answers (tightened "Is this real?", pricing/process FAQs)
 
 **Interactive Demo (`src/components/demo/`):**
 - `DemoPage.tsx` - Orchestrator managing 7-step state

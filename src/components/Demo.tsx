@@ -112,6 +112,11 @@ export default function Demo() {
           ))}
         </div>
 
+        {/* Instruction line */}
+        <p className="text-center text-sm md:text-base text-text-secondary mb-6 md:mb-8">
+          Click a moment → watch the clip → toggle privacy blur → export-ready.
+        </p>
+
         {/* Demo container */}
         <div className="max-w-5xl mx-auto">
           {/* Current step info */}
@@ -215,6 +220,7 @@ export default function Demo() {
                     <button
                       key={highlight.id}
                       onClick={() => handleHighlightClick(highlight)}
+                      data-event="demo_click_moment"
                       className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full transition-all duration-300 cursor-pointer
                         ${getHighlightColor(highlight.type)}
                         ${selectedHighlight?.id === highlight.id
@@ -259,6 +265,20 @@ export default function Demo() {
             </div>
           )}
 
+          {/* Get clips like this CTA */}
+          <div className="mt-6 md:mt-8 text-center">
+            <a
+              href="#early-access"
+              className="btn-primary text-base inline-flex items-center gap-2"
+              data-event="demo_cta_get_clips"
+            >
+              Get clips like this
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+          </div>
+
           {/* Always visible CTA */}
           <div className="mt-8 md:mt-12 text-center">
             <p className="hidden md:block text-lg text-text-secondary mb-4">Want the full experience?</p>
@@ -273,7 +293,7 @@ export default function Demo() {
                 </svg>
                 Try Interactive Demo
               </a>
-              <a href="#pricing" className="btn-secondary text-lg">
+              <a href="#early-access" className="btn-secondary text-lg">
                 Get Early Access
               </a>
             </div>
