@@ -1,121 +1,167 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { DemoStep, stepInfo, Match, Highlight, mockHighlights } from "./constants";
+import { Highlight, mockHighlights } from "./constants";
 import IOSStatusBar from "../ios/IOSStatusBar";
 import IOSHomeIndicator from "../ios/IOSHomeIndicator";
-import IOSNavigationBar from "../ios/IOSNavigationBar";
 import IPhoneFrame from "../ios/IPhoneFrame";
 
-// Step components (to be implemented)
-import DemoWelcome from "./DemoWelcome";
-import MatchSelector from "./MatchSelector";
-import AIProcessing from "./AIProcessing";
+// Step components
 import HighlightReveal from "./HighlightReveal";
 import BlurPreview from "./BlurPreview";
 import ShareSheet from "./ShareSheet";
 import DemoSuccess from "./DemoSuccess";
 
+// Simplified demo steps: 1=Highlights, 2=BlurPreview, 3=Share, 4=Success
+type BeliefDemoStep = 1 | 2 | 3 | 4;
+
+// The "best" highlight to auto-select on load (Goal at 67:38)
+const defaultHighlight = mockHighlights[2]; // "Header from corner" - most exciting
+
 export default function DemoPage() {
   const router = useRouter();
-  const [currentStep, setCurrentStep] = useState<DemoStep>(1);
-  const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
-  const [selectedHighlight, setSelectedHighlight] = useState<Highlight | null>(null);
+  // Start at step 1 with a highlight already selected (instant "win")
+  const [currentStep, setCurrentStep] = useState<BeliefDemoStep>(1);
+  const [selectedHighlight, setSelectedHighlight] = useState<Highlight>(defaultHighlight);
   const [faceBlurEnabled, setFaceBlurEnabled] = useState(true);
-
-  // Navigation handlers
-  const handleNext = useCallback(() => {
-    if (currentStep < 7) {
-      setCurrentStep((prev) => (prev + 1) as DemoStep);
-    }
-  }, [currentStep]);
-
-  const handleBack = useCallback(() => {
-    if (currentStep > 1) {
-      setCurrentStep((prev) => (prev - 1) as DemoStep);
-    }
-  }, [currentStep]);
+  // Track if user has toggled blur at least once
+  const hasToggledBlurRef = useRef(false);
 
   const handleClose = useCallback(() => {
     router.push("/");
   }, [router]);
 
-  // Step-specific handlers
-  const handleMatchSelect = useCallback((match: Match) => {
-    setSelectedMatch(match);
-    // Auto-advance after brief delay
-    setTimeout(() => setCurrentStep(3), 500);
-  }, []);
-
-  const handleProcessingComplete = useCallback(() => {
-    setCurrentStep(4);
-  }, []);
-
+  // User-triggered progression only
   const handleHighlightSelect = useCallback((highlight: Highlight) => {
     setSelectedHighlight(highlight);
-    setTimeout(() => setCurrentStep(5), 500);
+  }, []);
+
+  const handleContinueFromHighlights = useCallback(() => {
+    setCurrentStep(2);
+  }, []);
+
+  const handleToggleBlur = useCallback(() => {
+    setFaceBlurEnabled((prev) => !prev);
+    hasToggledBlurRef.current = true;
+  }, []);
+
+  const handleContinueFromBlur = useCallback(() => {
+    setCurrentStep(3);
   }, []);
 
   const handleShareComplete = useCallback(() => {
-    setCurrentStep(7);
+    setCurrentStep(4);
   }, []);
+
+  const handleBack = useCallback(() => {
+    if (currentStep > 1) {
+      setCurrentStep((prev) => (prev - 1) as BeliefDemoStep);
+    }
+  }, [currentStep]);
 
   // Render current step content
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
-        return <DemoWelcome onStart={handleNext} />;
-      case 2:
-        return <MatchSelector onSelect={handleMatchSelect} />;
-      case 3:
-        return <AIProcessing onComplete={handleProcessingComplete} />;
-      case 4:
         return (
           <HighlightReveal
             highlights={mockHighlights}
             onSelect={handleHighlightSelect}
+            onContinue={handleContinueFromHighlights}
+            defaultSelectedId={defaultHighlight.id}
           />
         );
-      case 5:
+      case 2:
         return (
           <BlurPreview
             highlight={selectedHighlight}
             blurEnabled={faceBlurEnabled}
-            onToggleBlur={() => setFaceBlurEnabled(!faceBlurEnabled)}
-            onContinue={handleNext}
+            onToggleBlur={handleToggleBlur}
+            onContinue={handleContinueFromBlur}
+            hasToggledBlur={hasToggledBlurRef.current}
           />
         );
-      case 6:
+      case 3:
         return <ShareSheet onShare={handleShareComplete} />;
-      case 7:
+      case 4:
         return <DemoSuccess onClose={handleClose} />;
       default:
         return null;
     }
   };
 
-  // Determine if we should show navigation bar
-  const showNavBar = currentStep > 1 && currentStep < 7;
-  const showBackButton = currentStep > 2 && currentStep < 7;
+  // Nav title for each step
+  const navTitles: Record<BeliefDemoStep, string> = {
+    1: "Your Highlights",
+    2: "Preview",
+    3: "Share",
+    4: "",
+  };
 
   // Screen content wrapper
   const ScreenContent = () => (
-    <div className="relative flex flex-col h-full bg-black">
+    <div
+      className="relative flex flex-col h-full bg-black"
+      data-event="try_demo_loaded"
+    >
       {/* iOS Status Bar - hidden on mobile (device has its own) */}
       <div className="hidden md:block">
         <IOSStatusBar />
       </div>
 
-      {/* Navigation Bar (conditional) */}
-      {showNavBar && (
-        <IOSNavigationBar
-          title={stepInfo[currentStep].navTitle}
-          onBack={showBackButton ? handleBack : undefined}
-          onClose={handleClose}
-          showBack={showBackButton}
-          largeTitle={currentStep !== 3} // No large title during processing
-        />
+      {/* Instruction line - always visible except on success */}
+      {currentStep < 4 && (
+        <div className="px-4 pt-4 pb-2">
+          <p className="text-[13px] text-white/50 text-center">
+            Click a moment → watch the clip → toggle privacy blur → share.
+          </p>
+        </div>
+      )}
+
+      {/* Reality signal */}
+      {currentStep < 4 && (
+        <div className="px-4 pb-2">
+          <p className="text-[11px] text-white/30 text-center">
+            Example clip from a real amateur match.
+          </p>
+        </div>
+      )}
+
+      {/* Nav header for steps 2+ */}
+      {currentStep > 1 && currentStep < 4 && (
+        <div className="flex items-center justify-between px-4 py-3">
+          <button
+            onClick={handleBack}
+            className="text-[17px] text-[#0A84FF] active:opacity-60"
+          >
+            Back
+          </button>
+          <span className="text-[17px] font-semibold text-white">
+            {navTitles[currentStep]}
+          </span>
+          <button
+            onClick={handleClose}
+            className="text-[17px] text-[#0A84FF] active:opacity-60"
+          >
+            Close
+          </button>
+        </div>
+      )}
+
+      {/* Close button for step 1 */}
+      {currentStep === 1 && (
+        <div className="flex items-center justify-between px-4 py-2">
+          <span className="text-[17px] font-semibold text-white">
+            {navTitles[currentStep]}
+          </span>
+          <button
+            onClick={handleClose}
+            className="text-[17px] text-[#0A84FF] active:opacity-60"
+          >
+            Close
+          </button>
+        </div>
       )}
 
       {/* Main content area */}

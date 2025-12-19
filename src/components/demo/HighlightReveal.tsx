@@ -6,65 +6,72 @@ import { Highlight, getHighlightIcon, getHighlightColor } from "./constants";
 interface HighlightRevealProps {
   highlights: Highlight[];
   onSelect: (highlight: Highlight) => void;
+  onContinue: () => void;
+  defaultSelectedId?: string;
 }
 
-export default function HighlightReveal({ highlights, onSelect }: HighlightRevealProps) {
-  const [revealedCount, setRevealedCount] = useState(0);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+export default function HighlightReveal({
+  highlights,
+  onSelect,
+  onContinue,
+  defaultSelectedId,
+}: HighlightRevealProps) {
+  const [revealedCount, setRevealedCount] = useState(highlights.length); // Show all immediately
+  const [selectedId, setSelectedId] = useState<string | null>(defaultSelectedId || null);
 
-  // Staggered reveal animation
+  // Find the currently selected highlight for display
+  const selectedHighlight = highlights.find((h) => h.id === selectedId);
+
+  // No staggered reveal - show all immediately for instant "win"
   useEffect(() => {
-    if (revealedCount < highlights.length) {
-      const timer = setTimeout(() => {
-        setRevealedCount((prev) => prev + 1);
-      }, 300);
-      return () => clearTimeout(timer);
+    // If there's a default selection, notify parent
+    if (defaultSelectedId) {
+      const defaultH = highlights.find((h) => h.id === defaultSelectedId);
+      if (defaultH) onSelect(defaultH);
     }
-  }, [revealedCount, highlights.length]);
+  }, [defaultSelectedId, highlights, onSelect]);
 
   const handleSelect = (highlight: Highlight) => {
     setSelectedId(highlight.id);
-    setTimeout(() => onSelect(highlight), 400);
+    onSelect(highlight);
   };
 
   return (
     <div className="flex flex-col h-full px-4 pt-2 pb-[34px]">
-      {/* Success indicator */}
-      <div className="flex items-center gap-2 mb-4">
-        <div className="w-6 h-6 rounded-full bg-[#30D158] flex items-center justify-center">
-          <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-            <path
-              d="M1 5L5 9L13 1"
-              stroke="black"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+      {/* Selected moment label - shows what's currently selected */}
+      {selectedHighlight && (
+        <div className="flex items-center justify-center gap-2 mb-4 py-2 px-4 bg-[#1C1C1E] rounded-lg self-center">
+          <span className="text-lg">{getHighlightIcon(selectedHighlight.type)}</span>
+          <span
+            className="text-[15px] font-semibold capitalize"
+            style={{ color: getHighlightColor(selectedHighlight.type) }}
+          >
+            {selectedHighlight.type}
+          </span>
+          <span className="text-[13px] text-white/50">—</span>
+          <span className="text-[13px] text-white/70">{selectedHighlight.time}</span>
         </div>
-        <span className="text-[15px] text-[#30D158] font-medium">
-          Analysis complete
-        </span>
-      </div>
+      )}
 
       {/* Subtitle */}
-      <p className="text-[15px] text-white/60 mb-6">
-        Tap a highlight to preview
+      <p className="text-[13px] text-white/50 mb-4 text-center">
+        Tap a moment to preview
       </p>
 
       {/* Timeline visualization */}
-      <div className="mb-6 px-2">
+      <div className="mb-4 px-2">
         <div className="flex items-center justify-between text-[11px] text-white/40 mb-2">
           <span>0:00</span>
           <span>90:00</span>
         </div>
         <div className="relative h-2 bg-[#2C2C2E] rounded-full">
-          {highlights.map((highlight, index) => (
-            <div
+          {highlights.map((highlight) => (
+            <button
               key={highlight.id}
-              className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full transition-all duration-300
-                ${index < revealedCount ? "scale-100 opacity-100" : "scale-0 opacity-0"}
-                ${selectedId === highlight.id ? "scale-150 ring-2 ring-white/50" : ""}
+              onClick={() => handleSelect(highlight)}
+              data-event="try_demo_click_moment"
+              className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full transition-all duration-300 cursor-pointer
+                ${selectedId === highlight.id ? "scale-150 ring-2 ring-white/50" : "hover:scale-125"}
               `}
               style={{
                 left: `${highlight.position}%`,
@@ -76,86 +83,89 @@ export default function HighlightReveal({ highlights, onSelect }: HighlightRevea
         </div>
       </div>
 
-      {/* Highlight cards */}
-      <div className="flex flex-col gap-3 flex-1">
-        {highlights.map((highlight, index) => (
+      {/* Highlight cards - scrollable if needed */}
+      <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
+        {highlights.map((highlight) => (
           <button
             key={highlight.id}
             onClick={() => handleSelect(highlight)}
-            disabled={index >= revealedCount}
-            className={`relative w-full p-4 rounded-[12px] text-left transition-all duration-500
-              ${index < revealedCount
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-              }
+            data-event="try_demo_click_moment"
+            className={`relative w-full p-3 rounded-[12px] text-left transition-all duration-200
               ${selectedId === highlight.id
                 ? "bg-[#1C1C1E] ring-2"
-                : "bg-[#1C1C1E] active:scale-[0.98]"
+                : "bg-[#1C1C1E] active:scale-[0.98] hover:bg-[#252528]"
               }
             `}
             style={{
-              transitionDelay: `${index * 100}ms`,
               '--tw-ring-color': selectedId === highlight.id ? getHighlightColor(highlight.type) : undefined,
             } as React.CSSProperties}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {/* Icon */}
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center text-2xl"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-xl flex-shrink-0"
                 style={{ backgroundColor: `${getHighlightColor(highlight.type)}20` }}
               >
                 {getHighlightIcon(highlight.type)}
               </div>
 
               {/* Info */}
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
                   <span
-                    className="text-[15px] font-semibold capitalize"
+                    className="text-[14px] font-semibold capitalize"
                     style={{ color: getHighlightColor(highlight.type) }}
                   >
                     {highlight.type}
                   </span>
-                  <span className="text-[13px] text-white/50">
+                  <span className="text-[12px] text-white/50">
                     {highlight.time}
                   </span>
                 </div>
-                <p className="text-[13px] text-white/60">
+                <p className="text-[12px] text-white/60 truncate">
                   {highlight.description}
                 </p>
               </div>
 
-              {/* Play indicator */}
-              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-                  <path d="M0 0L12 7L0 14V0Z" fill="white" />
-                </svg>
-              </div>
+              {/* Selected indicator or play icon */}
+              {selectedId === highlight.id ? (
+                <div className="w-6 h-6 rounded-full bg-[#30D158] flex items-center justify-center flex-shrink-0">
+                  <svg width="12" height="9" viewBox="0 0 14 10" fill="none">
+                    <path
+                      d="M1 5L5 9L13 1"
+                      stroke="black"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              ) : (
+                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <svg width="10" height="12" viewBox="0 0 12 14" fill="none">
+                    <path d="M0 0L12 7L0 14V0Z" fill="white" fillOpacity="0.6" />
+                  </svg>
+                </div>
+              )}
             </div>
-
-            {/* Pulsing hint on first card */}
-            {index === 0 && revealedCount === highlights.length && !selectedId && (
-              <div className="absolute inset-0 rounded-[12px] ring-2 ring-[#30D158] animate-pulse pointer-events-none" />
-            )}
           </button>
         ))}
       </div>
 
-      {/* Legend */}
-      <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-white/10">
-        {[
-          { type: "goal", label: "Goals" },
-          { type: "assist", label: "Assists" },
-          { type: "save", label: "Saves" },
-        ].map((item) => (
-          <div key={item.type} className="flex items-center gap-2">
-            <div
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: getHighlightColor(item.type as Highlight["type"]) }}
-            />
-            <span className="text-[13px] text-white/50">{item.label}</span>
-          </div>
-        ))}
+      {/* Continue button - user must click to proceed */}
+      <div className="mt-4 pt-4 border-t border-white/10">
+        <button
+          onClick={onContinue}
+          disabled={!selectedId}
+          className={`w-full h-[50px] rounded-[12px] text-[17px] font-semibold transition-all duration-200
+            ${selectedId
+              ? "bg-[#30D158] text-black active:scale-[0.97] active:opacity-90"
+              : "bg-[#30D158]/30 text-black/50 cursor-not-allowed"
+            }
+          `}
+        >
+          Continue
+        </button>
       </div>
     </div>
   );

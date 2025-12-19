@@ -16,14 +16,14 @@ export default function DemoSuccess({ onClose }: DemoSuccessProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleFoundingMember = () => {
-    // Navigate to pricing section with founding member focus
-    window.location.href = "/#pricing";
+  const handleRequestAccess = () => {
+    // Navigate to early access section
+    window.location.href = "/#early-access";
   };
 
-  const handleWaitlist = () => {
-    // Navigate to pricing section with waitlist focus
-    window.location.href = "/#pricing";
+  const handleSeePricing = () => {
+    // Navigate to early access/pricing section
+    window.location.href = "/#early-access";
   };
 
   return (
@@ -105,39 +105,32 @@ export default function DemoSuccess({ onClose }: DemoSuccessProps) {
 
       {/* CTAs */}
       <div className="relative z-10 mt-auto space-y-3">
-        {/* Primary CTA - Founding Member */}
+        {/* Primary CTA - Request Early Access */}
         <button
-          onClick={handleFoundingMember}
-          className="w-full h-[56px] rounded-[14px] bg-[#30D158] text-black text-[17px] font-semibold active:scale-[0.97] active:opacity-90 transition-all duration-100 flex items-center justify-center gap-2"
+          onClick={handleRequestAccess}
+          data-event="try_demo_request_early_access"
+          className="w-full h-[56px] rounded-[14px] bg-[#30D158] text-black text-[17px] font-semibold active:scale-[0.97] active:opacity-90 transition-all duration-100"
         >
-          <span>Lock in Founding Member</span>
-          <span className="px-2 py-0.5 rounded-full bg-black/20 text-[13px]">
-            £4.99
-          </span>
+          Request early access
         </button>
 
-        {/* Trust badge */}
-        <div className="flex items-center justify-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#30D158" strokeWidth="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
-          <span className="text-[13px] text-white/50">
-            100% refundable · 3 months free
-          </span>
-        </div>
+        {/* Microcopy */}
+        <p className="text-[12px] text-white/40 text-center">
+          No spam. We&apos;ll invite UK testers first.
+        </p>
 
-        {/* Secondary CTA */}
+        {/* Secondary CTA - See Pricing */}
         <button
-          onClick={handleWaitlist}
-          className="w-full h-[50px] rounded-[12px] bg-transparent border border-white/20 text-white text-[17px] active:bg-white/10 transition-colors"
+          onClick={handleSeePricing}
+          className="w-full h-[44px] rounded-[12px] bg-transparent text-[#0A84FF] text-[15px] active:opacity-60 transition-opacity"
         >
-          Join Free Waitlist
+          See pricing
         </button>
 
         {/* Back to home */}
         <button
           onClick={onClose}
-          className="w-full py-3 text-[15px] text-white/40 active:text-white/60 transition-colors"
+          className="w-full py-2 text-[14px] text-white/40 active:text-white/60 transition-colors"
         >
           Back to home
         </button>

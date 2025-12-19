@@ -129,6 +129,7 @@ export default function ShareSheet({ onShare }: ShareSheetProps) {
               key={option.id}
               onClick={option.primary ? handleShare : undefined}
               disabled={isSharing}
+              data-event={option.primary ? "try_demo_share" : undefined}
               className="flex flex-col items-center gap-2"
             >
               <div

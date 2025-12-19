@@ -30,14 +30,25 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 7. Footer
 
 ### Interactive Demo (`/try`)
-Full-screen iOS-style demo experience at `src/app/try/`. 7-step flow:
-1. Welcome - App intro with "Start Demo" CTA
-2. Match Selection - Choose from 3 mock matches
-3. AI Processing - Animated progress ring (4.5s)
-4. Highlight Reveal - Timeline + 3 highlight cards
-5. Blur Preview - Face blur toggle demonstration
-6. Share Sheet - Instagram share simulation
-7. Success - Confetti + £4.99 founding member CTA
+Streamlined "belief demo" at `src/app/try/`. Designed for instant "wow" + clear conversion path. 4-step flow:
+1. Highlight Selection - Pre-selected "Goal — 67:38", timeline + 3 moment cards, Continue button
+2. Blur Preview - Face blur toggle with hint animation, Continue button
+3. Share Sheet - Instagram share simulation
+4. Success - Confetti + "Request early access" CTA → `/#early-access`
+
+**Key UX patterns:**
+- **Instant win**: Demo loads with best highlight already selected (no blank state)
+- **User-triggered progression**: No auto-advancing; user clicks Continue to proceed
+- **Instruction line**: "Click a moment → watch the clip → toggle privacy blur → share."
+- **Reality signal**: "Example clip from a real amateur match." shown below instructions
+- **Conversion bridge**: Success screen links to `/#early-access` with microcopy "No spam. We'll invite UK testers first."
+
+**Analytics instrumentation** (data-event attributes for future wiring):
+- `try_demo_loaded` - Main container
+- `try_demo_click_moment` - Timeline markers + highlight cards
+- `try_demo_toggle_blur` - Privacy toggle
+- `try_demo_share` - Instagram share button
+- `try_demo_request_early_access` - Final CTA
 
 **Responsive presentation:**
 - Mobile: Full-screen native iOS feel
@@ -87,15 +98,13 @@ Landing page is optimized for mobile-first viewing:
 - `FAQ.tsx` - Accordion with trust-focused answers (tightened "Is this real?", pricing/process FAQs)
 
 **Interactive Demo (`src/components/demo/`):**
-- `DemoPage.tsx` - Orchestrator managing 7-step state
-- `DemoWelcome.tsx` - Welcome screen with gradient orb animation
-- `MatchSelector.tsx` - 3 match cards with selection state
-- `AIProcessing.tsx` - Circular progress ring with dynamic messages
-- `HighlightReveal.tsx` - Timeline + staggered card reveal
-- `BlurPreview.tsx` - Video placeholder with face blur toggle
-- `ShareSheet.tsx` - Instagram-style share UI
-- `DemoSuccess.tsx` - Confetti celebration + conversion CTAs
+- `DemoPage.tsx` - Orchestrator managing 4-step belief demo flow
+- `HighlightReveal.tsx` - Timeline + highlight cards with default selection, Continue button
+- `BlurPreview.tsx` - Video placeholder with face blur toggle, hint animation
+- `ShareSheet.tsx` - Instagram-style share UI with `data-event` tracking
+- `DemoSuccess.tsx` - Confetti + "Request early access" CTA to `/#early-access`
 - `constants.ts` - Mock data for matches and highlights
+- `DemoWelcome.tsx`, `MatchSelector.tsx`, `AIProcessing.tsx` - Legacy (not used in current flow)
 
 **iOS Components (`src/components/ios/`):**
 - `IPhoneFrame.tsx` - iPhone 15 Pro bezel wrapper (desktop only)

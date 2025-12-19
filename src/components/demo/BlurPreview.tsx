@@ -7,6 +7,7 @@ interface BlurPreviewProps {
   blurEnabled: boolean;
   onToggleBlur: () => void;
   onContinue: () => void;
+  hasToggledBlur?: boolean;
 }
 
 // Simulated face positions for blur circles
@@ -21,6 +22,7 @@ export default function BlurPreview({
   blurEnabled,
   onToggleBlur,
   onContinue,
+  hasToggledBlur = false,
 }: BlurPreviewProps) {
   return (
     <div className="flex flex-col h-full px-4 pt-2 pb-[34px]">
@@ -105,8 +107,10 @@ export default function BlurPreview({
           {/* iOS-style toggle */}
           <button
             onClick={onToggleBlur}
+            data-event="try_demo_toggle_blur"
             className={`relative w-[51px] h-[31px] rounded-full transition-colors duration-300
               ${blurEnabled ? "bg-[#30D158]" : "bg-[#39393D]"}
+              ${!hasToggledBlur ? "ring-2 ring-[#30D158]/50 animate-pulse" : ""}
             `}
           >
             <div
@@ -119,7 +123,7 @@ export default function BlurPreview({
       </div>
 
       {/* Status indicator */}
-      <div className="flex items-center justify-center gap-2 mb-6">
+      <div className="flex items-center justify-center gap-2 mb-4">
         <div className={`w-2 h-2 rounded-full transition-colors duration-300
           ${blurEnabled ? "bg-[#30D158]" : "bg-[#FF453A]"}`}
         />
@@ -127,6 +131,13 @@ export default function BlurPreview({
           Face blur {blurEnabled ? "enabled" : "disabled"}
         </span>
       </div>
+
+      {/* Hint to toggle blur */}
+      {!hasToggledBlur && (
+        <p className="text-[12px] text-[#30D158] text-center mb-4 animate-pulse">
+          ↑ Try toggling the privacy switch above
+        </p>
+      )}
 
       {/* Continue button */}
       <div className="mt-auto">
