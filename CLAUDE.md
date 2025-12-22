@@ -25,9 +25,10 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 2. SocialProof - Example IG posts, stats bar with footnote (moved up for proof-first approach)
 3. Problem - 5-step narrative showing user pain points
 4. Demo (`#demo`) - Instruction line, interactive 3-step demo (timeline, face blur toggle, share simulation), "Get clips like this" CTA
-5. Pricing (`#early-access`) - Two-tier CTA (Founding Member £4.99 deposit + Free Waitlist with Role dropdown)
-6. FAQ - Expandable accordion with trust-focused answers
-7. Footer
+5. Features - "AI That Knows You" section showcasing 5 AI-powered features with rich mockups
+6. Pricing (`#early-access`) - Two-tier CTA (Founding Member £4.99 deposit + Free Waitlist with Role dropdown)
+7. FAQ - Expandable accordion with trust-focused answers
+8. Footer
 
 ### Interactive Demo (`/try`)
 Streamlined "belief demo" at `src/app/try/`. Designed for instant "wow" + clear conversion path. 4-step flow:
@@ -94,6 +95,12 @@ Landing page is optimized for mobile-first viewing:
 - `Hero.tsx` - "Early access" badge, dual CTAs with anchor scroll, video placeholder
 - `SocialProof.tsx` - Example IG posts with "Examples" label, stats bar with transparency footnote
 - `Demo.tsx` - Instruction line, 3-step flow with `data-event` tracking, "Get clips like this" CTA
+- `Features.tsx` - "AI That Knows You" section with 5 rich mockup feature cards:
+  - Mum Gets Every Goal: iMessage mockup showing auto-share to family
+  - You're Getting Better: Progress dashboard with stats and AI insights
+  - Top 1%: Highlight card with glowing rarity badge and percentile bar
+  - Your Season Story: Film-strip video preview for AI-generated season documentary
+  - Coach's Notes: Highlight with AI analysis speech bubble
 - `Pricing.tsx` - Founding Member + Free Waitlist cards, Role dropdown (Player/Parent/Coach), `#early-access` anchor
 - `FAQ.tsx` - Accordion with trust-focused answers (tightened "Is this real?", pricing/process FAQs)
 
