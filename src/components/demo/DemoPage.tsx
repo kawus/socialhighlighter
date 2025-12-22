@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Highlight, mockHighlights } from "./constants";
+import { Highlight, mockHighlights, ExploreFeature } from "./constants";
 import IOSStatusBar from "../ios/IOSStatusBar";
 import IOSHomeIndicator from "../ios/IOSHomeIndicator";
 import IPhoneFrame from "../ios/IPhoneFrame";
@@ -12,6 +12,8 @@ import HighlightReveal from "./HighlightReveal";
 import BlurPreview from "./BlurPreview";
 import ShareSheet from "./ShareSheet";
 import DemoSuccess from "./DemoSuccess";
+import SeasonStoryPreview from "./SeasonStoryPreview";
+import Top1Preview from "./Top1Preview";
 
 // Simplified demo steps: 1=Highlights, 2=BlurPreview, 3=Share, 4=Success
 type BeliefDemoStep = 1 | 2 | 3 | 4;
@@ -27,6 +29,8 @@ export default function DemoPage() {
   const [faceBlurEnabled, setFaceBlurEnabled] = useState(true);
   // Track if user has toggled blur at least once
   const hasToggledBlurRef = useRef(false);
+  // Track which AI feature is being explored (null = not exploring)
+  const [activeExplore, setActiveExplore] = useState<ExploreFeature>(null);
 
   const handleClose = useCallback(() => {
     router.push("/");
@@ -60,6 +64,20 @@ export default function DemoPage() {
     }
   }, [currentStep]);
 
+  // Explore feature handlers
+  const handleExplore = useCallback((feature: ExploreFeature) => {
+    setActiveExplore(feature);
+  }, []);
+
+  const handleCloseExplore = useCallback(() => {
+    setActiveExplore(null);
+  }, []);
+
+  const handleRequestAccessFromExplore = useCallback(() => {
+    setActiveExplore(null);
+    router.push("/#early-access");
+  }, [router]);
+
   // Render current step content
   const renderStepContent = () => {
     switch (currentStep) {
@@ -85,7 +103,7 @@ export default function DemoPage() {
       case 3:
         return <ShareSheet onShare={handleShareComplete} />;
       case 4:
-        return <DemoSuccess onClose={handleClose} />;
+        return <DemoSuccess onClose={handleClose} onExplore={handleExplore} />;
       default:
         return null;
     }
@@ -111,7 +129,7 @@ export default function DemoPage() {
       </div>
 
       {/* Instruction line - always visible except on success */}
-      {currentStep < 4 && (
+      {currentStep < 4 && !activeExplore && (
         <div className="px-4 pt-4 pb-2">
           <p className="text-[13px] text-white/50 text-center">
             Click a moment → watch the clip → toggle privacy blur → share.
@@ -120,7 +138,7 @@ export default function DemoPage() {
       )}
 
       {/* Reality signal */}
-      {currentStep < 4 && (
+      {currentStep < 4 && !activeExplore && (
         <div className="px-4 pb-2">
           <p className="text-[11px] text-white/30 text-center">
             Example clip from a real amateur match.
@@ -129,7 +147,7 @@ export default function DemoPage() {
       )}
 
       {/* Nav header for steps 2+ */}
-      {currentStep > 1 && currentStep < 4 && (
+      {currentStep > 1 && currentStep < 4 && !activeExplore && (
         <div className="flex items-center justify-between px-4 py-3">
           <button
             onClick={handleBack}
@@ -150,7 +168,7 @@ export default function DemoPage() {
       )}
 
       {/* Close button for step 1 */}
-      {currentStep === 1 && (
+      {currentStep === 1 && !activeExplore && (
         <div className="flex items-center justify-between px-4 py-2">
           <span className="text-[17px] font-semibold text-white">
             {navTitles[currentStep]}
@@ -171,6 +189,20 @@ export default function DemoPage() {
 
       {/* iOS Home Indicator */}
       <IOSHomeIndicator />
+
+      {/* Explore feature overlays - inside screen content */}
+      {activeExplore === "season" && (
+        <SeasonStoryPreview
+          onClose={handleCloseExplore}
+          onRequestAccess={handleRequestAccessFromExplore}
+        />
+      )}
+      {activeExplore === "top1" && (
+        <Top1Preview
+          onClose={handleCloseExplore}
+          onRequestAccess={handleRequestAccessFromExplore}
+        />
+      )}
     </div>
   );
 

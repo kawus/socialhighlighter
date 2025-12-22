@@ -110,6 +110,37 @@ html {
   }
 }
 
+/* Sheet slide animations for explore features */
+@keyframes sheet-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sheet-slide-down {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-sheet-up {
+  animation: sheet-slide-up 0.4s var(--ease-out-expo) forwards;
+}
+
+.animate-sheet-down {
+  animation: sheet-slide-down 0.3s ease-in forwards;
+}
+
 /* Utility classes */
 @layer utilities {
   .text-gradient {

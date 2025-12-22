@@ -33,23 +33,33 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 ### Interactive Demo (`/try`)
 Streamlined "belief demo" at `src/app/try/`. Designed for instant "wow" + clear conversion path. 4-step flow:
 1. Highlight Selection - Pre-selected "Goal — 67:38", timeline + 3 moment cards, Continue button
-2. Blur Preview - Face blur toggle with hint animation, Continue button
+2. Blur Preview - Face blur toggle with hint animation, **AI rarity badge** (TOP 1% etc.), rarity insight card, Continue button
 3. Share Sheet - Instagram share simulation
-4. Success - Confetti + "Request early access" CTA → `/#early-access`
+4. Success - Confetti + "Request early access" CTA + **Explore Hub** with AI feature previews
+
+**Explore Hub (Success screen):**
+After completing the demo, users can explore AI features via tappable cards:
+- **Top 1% Moments** - Explains rarity scoring system with example rankings
+- **Season Story** - Cinematic preview of AI-generated season documentary
+Both lead to "Request early access" with clear expectation-setting microcopy.
 
 **Key UX patterns:**
 - **Instant win**: Demo loads with best highlight already selected (no blank state)
 - **User-triggered progression**: No auto-advancing; user clicks Continue to proceed
 - **Instruction line**: "Click a moment → watch the clip → toggle privacy blur → share."
 - **Reality signal**: "Example clip from a real amateur match." shown below instructions
+- **AI validation**: Rarity badge + insight card in BlurPreview makes user feel their moment is special
 - **Conversion bridge**: Success screen links to `/#early-access` with microcopy "No spam. We'll invite UK testers first."
 
 **Analytics instrumentation** (data-event attributes for future wiring):
 - `try_demo_loaded` - Main container
 - `try_demo_click_moment` - Timeline markers + highlight cards
 - `try_demo_toggle_blur` - Privacy toggle
+- `try_demo_rarity_viewed` - When rarity badge appears
 - `try_demo_share` - Instagram share button
 - `try_demo_request_early_access` - Final CTA
+- `try_demo_explore_top1` - When Top 1% preview opens
+- `try_demo_explore_season` - When Season Story preview opens
 
 **Responsive presentation:**
 - Mobile: Full-screen native iOS feel
@@ -69,6 +79,7 @@ Sports-focused dark theme defined in two places:
 - `.section-container`, `.section-padding` - Layout utilities
 - `.text-gradient` - Green-to-cyan gradient text
 - `.scrollbar-hide` - Hide scrollbar for horizontal scroll containers
+- `.animate-sheet-up`, `.animate-sheet-down` - iOS-style sheet slide animations for explore features
 
 ### Mobile Optimization Patterns
 Landing page is optimized for mobile-first viewing:
@@ -105,12 +116,14 @@ Landing page is optimized for mobile-first viewing:
 - `FAQ.tsx` - Accordion with trust-focused answers (tightened "Is this real?", pricing/process FAQs)
 
 **Interactive Demo (`src/components/demo/`):**
-- `DemoPage.tsx` - Orchestrator managing 4-step belief demo flow
+- `DemoPage.tsx` - Orchestrator managing 4-step belief demo flow + explore feature state
 - `HighlightReveal.tsx` - Timeline + highlight cards with default selection, Continue button
-- `BlurPreview.tsx` - Video placeholder with face blur toggle, hint animation
+- `BlurPreview.tsx` - Video placeholder with face blur toggle, hint animation, rarity badge + insight card
 - `ShareSheet.tsx` - Instagram-style share UI with `data-event` tracking
-- `DemoSuccess.tsx` - Confetti + "Request early access" CTA to `/#early-access`
-- `constants.ts` - Mock data for matches and highlights
+- `DemoSuccess.tsx` - Confetti + "Request early access" CTA + Explore Hub with feature cards
+- `SeasonStoryPreview.tsx` - Cinematic season documentary preview with film-strip UI, stats, AI insight
+- `Top1Preview.tsx` - Rarity system explainer with hero badge, example rankings, "how it works"
+- `constants.ts` - Mock data for matches, highlights (with rarity data), and ExploreFeature type
 - `DemoWelcome.tsx`, `MatchSelector.tsx`, `AIProcessing.tsx` - Legacy (not used in current flow)
 
 **iOS Components (`src/components/ios/`):**

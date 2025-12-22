@@ -47,6 +47,21 @@ export default function BlurPreview({
           </div>
         )}
 
+        {/* Rarity badge - TOP X% */}
+        {highlight?.rarity && (
+          <div className="absolute top-3 right-3" data-event="try_demo_rarity_viewed">
+            <div className="relative">
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-[#FFB800] blur-lg opacity-60 animate-pulse" />
+              <div className="relative px-3 py-1.5 bg-gradient-to-r from-[#FFB800] to-orange-500 rounded-full">
+                <span className="text-black font-black text-xs tracking-wide">
+                  {highlight.rarity.label.toUpperCase()}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Face blur circles */}
         {facePositions.map((face, index) => (
           <div
@@ -93,7 +108,7 @@ export default function BlurPreview({
       </div>
 
       {/* Face Blur Toggle - iOS Style */}
-      <div className="bg-[#1C1C1E] rounded-[12px] p-4 mb-6">
+      <div className="bg-[#1C1C1E] rounded-[12px] p-4 mb-4">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-[17px] font-semibold text-white mb-1">
@@ -121,6 +136,33 @@ export default function BlurPreview({
           </button>
         </div>
       </div>
+
+      {/* Rarity insight card */}
+      {highlight?.rarity && (
+        <div className="bg-[#1C1C1E] rounded-[12px] p-4 mb-4 border border-[#FFB800]/20">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#FFB800]/20 flex items-center justify-center flex-shrink-0">
+              <span className="text-[#FFB800]">✨</span>
+            </div>
+            <div className="flex-1">
+              <p className="text-[13px] text-white/90 mb-2">
+                {highlight.rarity.reason}
+              </p>
+              {/* Rarity bar */}
+              <div className="h-1.5 bg-[#2C2C2E] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-[#FFB800] via-orange-500 to-red-500 rounded-full transition-all duration-500"
+                  style={{ width: `${100 - highlight.rarity.percentile}%` }}
+                />
+              </div>
+              <div className="flex justify-between mt-1">
+                <span className="text-[10px] text-white/40">Common</span>
+                <span className="text-[10px] text-[#FFB800] font-medium">Exceptional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Status indicator */}
       <div className="flex items-center justify-center gap-2 mb-4">

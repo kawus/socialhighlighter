@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import ConfettiAnimation from "./ConfettiAnimation";
+import { ExploreFeature } from "./constants";
 
 interface DemoSuccessProps {
   onClose: () => void;
+  onExplore?: (feature: ExploreFeature) => void;
 }
 
-export default function DemoSuccess({ onClose }: DemoSuccessProps) {
+export default function DemoSuccess({ onClose, onExplore }: DemoSuccessProps) {
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {
@@ -102,6 +104,57 @@ export default function DemoSuccess({ onClose }: DemoSuccessProps) {
           </div>
         </div>
       </div>
+
+      {/* Explore More AI Features */}
+      {onExplore && (
+        <div className="relative z-10 mb-6">
+          {/* Divider */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-[12px] text-white/40 uppercase tracking-wider">
+              See what else AI can do
+            </span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+
+          {/* Feature cards */}
+          <div className="grid grid-cols-2 gap-3">
+            {/* Top 1% Moments */}
+            <button
+              onClick={() => onExplore("top1")}
+              data-event="try_demo_explore_top1"
+              className="bg-[#1C1C1E] rounded-[12px] p-3 text-left border border-[#FFB800]/20 active:scale-[0.97] transition-transform"
+            >
+              <div className="w-8 h-8 rounded-full bg-[#FFB800]/20 flex items-center justify-center mb-2">
+                <span className="text-[#FFB800] text-sm">🏆</span>
+              </div>
+              <p className="text-[13px] font-semibold text-white mb-0.5">
+                Top 1% Moments
+              </p>
+              <p className="text-[11px] text-white/50">
+                See how your moments rank
+              </p>
+            </button>
+
+            {/* Season Story */}
+            <button
+              onClick={() => onExplore("season")}
+              data-event="try_demo_explore_season"
+              className="bg-[#1C1C1E] rounded-[12px] p-3 text-left border border-[#30D158]/20 active:scale-[0.97] transition-transform"
+            >
+              <div className="w-8 h-8 rounded-full bg-[#30D158]/20 flex items-center justify-center mb-2">
+                <span className="text-[#30D158] text-sm">🎬</span>
+              </div>
+              <p className="text-[13px] font-semibold text-white mb-0.5">
+                Season Story
+              </p>
+              <p className="text-[11px] text-white/50">
+                Your year, in 3 minutes
+              </p>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* CTAs */}
       <div className="relative z-10 mt-auto space-y-3">

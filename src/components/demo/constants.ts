@@ -1,6 +1,9 @@
 // Demo step type
 export type DemoStep = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
+// Explore feature type for AI feature previews
+export type ExploreFeature = "top1" | "season" | null;
+
 // Mock match data
 export interface Match {
   id: string;
@@ -36,6 +39,13 @@ export const mockMatches: Match[] = [
   },
 ];
 
+// Rarity data for AI-powered moment ranking
+export interface HighlightRarity {
+  percentile: number; // 1-100, lower = rarer (1 = top 1%)
+  label: string; // "Top 1%", "Top 5%", etc.
+  reason: string; // Why this moment is rare
+}
+
 // Highlight types and data
 export interface Highlight {
   id: string;
@@ -43,6 +53,7 @@ export interface Highlight {
   time: string;
   position: number; // percentage along timeline (0-100)
   description: string;
+  rarity?: HighlightRarity; // Optional AI-generated rarity data
 }
 
 export const mockHighlights: Highlight[] = [
@@ -52,6 +63,11 @@ export const mockHighlights: Highlight[] = [
     time: "23:14",
     position: 25,
     description: "Curler into top corner",
+    rarity: {
+      percentile: 5,
+      label: "Top 5%",
+      reason: "Only 5% of goals curl into the top corner",
+    },
   },
   {
     id: "2",
@@ -59,6 +75,11 @@ export const mockHighlights: Highlight[] = [
     time: "41:02",
     position: 45,
     description: "Through ball to striker",
+    rarity: {
+      percentile: 12,
+      label: "Top 12%",
+      reason: "A perfectly weighted through ball",
+    },
   },
   {
     id: "3",
@@ -66,6 +87,11 @@ export const mockHighlights: Highlight[] = [
     time: "67:38",
     position: 75,
     description: "Header from corner",
+    rarity: {
+      percentile: 1,
+      label: "Top 1%",
+      reason: "Headers from corners are the rarest goals",
+    },
   },
 ];
 
