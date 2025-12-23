@@ -5,7 +5,7 @@ const mockPosts = [
     id: 1,
     username: "sunday_league_legend",
     avatar: "SL",
-    image: "goal-celebration",
+    imageUrl: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=400&fit=crop",
     caption: "Top bins from 25 yards out 🎯 Finally got it on video!",
     likes: 847,
     comments: 42,
@@ -15,7 +15,7 @@ const mockPosts = [
     id: 2,
     username: "grassroots_fc",
     avatar: "GF",
-    image: "team-goal",
+    imageUrl: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=400&fit=crop",
     caption: "Team goal of the season. One touch football 👏",
     likes: 1243,
     comments: 89,
@@ -25,7 +25,7 @@ const mockPosts = [
     id: 3,
     username: "keeper_kings",
     avatar: "KK",
-    image: "save",
+    imageUrl: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=400&fit=crop",
     caption: "Double save. They thought it was in twice 🧤",
     likes: 562,
     comments: 28,
@@ -71,15 +71,14 @@ export default function SocialProof() {
                 </svg>
               </div>
 
-              {/* Post image placeholder */}
+              {/* Post image */}
               <div className="aspect-square bg-bg-tertiary relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl">
-                    {post.image === "goal-celebration" && "⚽"}
-                    {post.image === "team-goal" && "🎯"}
-                    {post.image === "save" && "🧤"}
-                  </div>
-                </div>
+                <img
+                  src={post.imageUrl}
+                  alt="Football highlight"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
                 {/* Veo watermark */}
                 <div className="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/50 backdrop-blur-sm">
                   <span className="text-xs font-bold text-white/80">VEO</span>
