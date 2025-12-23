@@ -6,32 +6,27 @@ const faqs = [
   {
     question: "Is this real or just a concept?",
     answer:
-      "Yes. We're building it now. The tech is from Veo, which already powers match analysis for thousands of clubs.",
-  },
-  {
-    question: "What happens after I request early access?",
-    answer:
-      "We'll email a small number of UK testers first, then expand.",
-  },
-  {
-    question: "What will it cost?",
-    answer:
-      "We're testing pricing with early users; founding members get 3 months free.",
-  },
-  {
-    question: "What if it doesn't work as shown?",
-    answer:
-      "Your £4.99 deposit is 100% refundable anytime before launch—no questions asked. If the final product doesn't meet your expectations, you get your money back.",
-  },
-  {
-    question: "When will it launch?",
-    answer:
-      "We're targeting launch in early 2025. Founding Members will get first access, followed by waitlist members. We'll keep you updated with progress along the way.",
+      "Yes. We're building it now. The tech is from Veo, which already powers match analysis for thousands of clubs worldwide.",
   },
   {
     question: "Do I need a Veo camera?",
     answer:
-      "Yes, Social Highlighter works with matches recorded by Veo cameras. If your club or pitch already has Veo set up, you're good to go. If not, check with your club about getting Veo installed.",
+      "Yes, Social Highlighter works with matches recorded by Veo cameras. If your club or pitch already has Veo set up, you're good to go. If not, check with your club about getting Veo installed—over 50,000 clubs already use it.",
+  },
+  {
+    question: "What happens after I join the waitlist?",
+    answer:
+      "We'll email you when we're ready for testers. UK-based players get priority access.",
+  },
+  {
+    question: "When will it launch?",
+    answer:
+      "We're targeting Q2 2025. Founding Members (opening Q1 2025) will get first access, followed by waitlist members.",
+  },
+  {
+    question: "What will it cost?",
+    answer:
+      "Pricing is still being finalized. Founding Members will get 3 months free to help us get it right.",
   },
   {
     question: "How does the AI find my highlights?",
@@ -44,9 +39,9 @@ const faqs = [
       "Absolutely. Our face blur technology automatically obscures everyone except you in your highlights. This means you can share freely on social media without worrying about other players' privacy.",
   },
   {
-    question: "What's included in the 3 free months for Founding Members?",
+    question: "What if it doesn't meet my expectations?",
     answer:
-      "During your first 3 months, you'll have unlimited access to all highlights from your matches—no caps, no limits. After that, you can continue with a paid subscription (pricing TBD based on feedback).",
+      "If you become a Founding Member, your £4.99 deposit is 100% refundable anytime before launch—no questions asked.",
   },
 ];
 
@@ -116,6 +111,22 @@ export default function FAQ() {
             Get in touch
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Conversion CTA */}
+        <div id="faq" className="mt-12 md:mt-16 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-accent-primary/10 to-transparent border border-accent-primary/20 text-center max-w-2xl mx-auto">
+          <h3 className="text-xl md:text-2xl font-bold mb-2">Ready to join?</h3>
+          <p className="text-text-secondary mb-6">Get notified when Social Highlighter launches.</p>
+          <a
+            href="#early-access"
+            className="btn-primary inline-flex items-center gap-2"
+            data-event="faq_cta_join_waitlist"
+          >
+            Join the Waitlist — Free
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </a>
         </div>

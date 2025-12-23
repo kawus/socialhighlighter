@@ -34,32 +34,55 @@ export default function Hero() {
         </h1>
 
         {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-base md:text-xl text-text-secondary mb-8 md:mb-12 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+        <p className="max-w-2xl mx-auto text-base md:text-xl text-text-secondary mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           We turn your best moments into shareable highlight clips—ready while you&apos;re still at the pitch.
         </p>
+
+        {/* Veo Requirement Badge */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-8 animate-fade-up" style={{ animationDelay: "0.15s" }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bg-tertiary/80 border border-white/10">
+            <svg className="w-4 h-4 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span className="text-sm text-text-secondary">Works with Veo cameras</span>
+          </div>
+          <a
+            href="#faq"
+            className="text-sm text-text-muted hover:text-accent-primary transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Don&apos;t have Veo? Check if your club does →
+          </a>
+        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           <button
             onClick={scrollToDemo}
-            className="btn-secondary text-base"
+            className="btn-primary text-base"
             data-event="cta_see_how_it_works"
           >
             See How It Works
           </button>
           <button
             onClick={scrollToEarlyAccess}
-            className="btn-primary text-base"
+            className="btn-secondary text-base"
             data-event="cta_request_early_access"
           >
-            Request early access
+            Join the Waitlist
           </button>
         </div>
 
-        {/* Microcopy */}
-        <p className="text-sm text-text-muted mt-4 animate-fade-up" style={{ animationDelay: "0.25s" }}>
-          We&apos;ll ask a few questions to see if it&apos;s a good fit. No obligation.
-        </p>
+        {/* Urgency Badge */}
+        <div className="flex items-center justify-center gap-2 mt-4 animate-fade-up" style={{ animationDelay: "0.25s" }}>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-energy-warm/10 border border-energy-warm/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-energy-warm animate-pulse" />
+            <span className="text-xs font-medium text-energy-warm">Founding Member pricing opens Q1 2025</span>
+          </span>
+        </div>
 
         {/* Hero Video/Image Placeholder */}
         <div className="mt-10 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>

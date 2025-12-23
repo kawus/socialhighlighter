@@ -126,22 +126,37 @@ export default function SocialProof() {
           ))}
         </div>
 
-        {/* Stats bar */}
-        <div className="mt-10 md:mt-16 grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto text-center">
-          {[
-            { value: "60s", label: "Delivery time" },
-            { value: "500+", label: "Beta users (incl. UK grassroots)" },
-            { value: "10K+", label: "Highlights" },
-          ].map((stat, index) => (
-            <div key={index}>
-              <p className="text-2xl md:text-4xl font-bold text-gradient">{stat.value}</p>
-              <p className="text-xs md:text-sm text-text-secondary mt-1 md:mt-2">{stat.label}</p>
+        {/* Powered by Veo credibility */}
+        <div className="mt-10 md:mt-16 max-w-3xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 p-6 md:p-8 rounded-2xl bg-bg-tertiary/50 border border-white/5">
+            {/* Veo logo placeholder */}
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                <span className="text-xl font-black text-white">V</span>
+              </div>
+              <div>
+                <p className="font-bold text-white">Built on Veo</p>
+                <p className="text-sm text-text-secondary">Match analysis technology</p>
+              </div>
             </div>
-          ))}
+
+            {/* Divider */}
+            <div className="hidden md:block w-px h-12 bg-white/10" />
+            <div className="md:hidden w-full h-px bg-white/10" />
+
+            {/* Stats */}
+            <div className="flex items-center gap-8 md:gap-12 text-center">
+              <div>
+                <p className="text-2xl md:text-3xl font-bold text-white">60s</p>
+                <p className="text-xs text-text-muted">Delivery</p>
+              </div>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold text-white">50K+</p>
+                <p className="text-xs text-text-muted">Veo cameras worldwide</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="text-xs text-text-muted text-center mt-4">
-          Counts shown are from early internal/beta testing; details shared on request.
-        </p>
       </div>
     </section>
   );

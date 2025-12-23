@@ -265,38 +265,22 @@ export default function Demo() {
             </div>
           )}
 
-          {/* Get clips like this CTA */}
-          <div className="mt-6 md:mt-8 text-center">
+          {/* Single clear CTA */}
+          <div className="mt-8 md:mt-12 text-center">
+            <p className="text-text-secondary mb-4">Want clips like this for your matches?</p>
             <a
               href="#early-access"
-              className="btn-primary text-base inline-flex items-center gap-2"
+              className="btn-primary text-lg inline-flex items-center gap-2"
               data-event="demo_cta_get_clips"
             >
-              Get clips like this
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              Join the Waitlist — Free
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </a>
-          </div>
-
-          {/* Always visible CTA */}
-          <div className="mt-8 md:mt-12 text-center">
-            <p className="hidden md:block text-lg text-text-secondary mb-4">Want the full experience?</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="/try"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-white/90 transition-all hover:scale-105"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Try Interactive Demo
-              </a>
-              <a href="#early-access" className="btn-secondary text-lg">
-                Get Early Access
-              </a>
-            </div>
+            <p className="text-sm text-text-muted mt-3">
+              Example from a real amateur match.
+            </p>
           </div>
         </div>
       </div>

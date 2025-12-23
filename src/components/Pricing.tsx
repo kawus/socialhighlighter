@@ -4,8 +4,6 @@ import { useState } from "react";
 
 export default function Pricing() {
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [clubName, setClubName] = useState("");
   const [role, setRole] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -21,9 +19,11 @@ export default function Pricing() {
     setIsSubmitting(false);
   };
 
-  const handlePreorder = () => {
-    // TODO: Integrate Stripe Checkout
-    alert("Stripe integration coming soon! For now, join the waitlist.");
+  const scrollToWaitlist = () => {
+    // Scroll to waitlist form and focus on email input
+    const emailInput = document.querySelector('input[type="email"]') as HTMLInputElement;
+    emailInput?.focus();
+    emailInput?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   if (submitted) {
@@ -71,14 +71,14 @@ export default function Pricing() {
         {/* Pricing cards */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {/* Founding Member - Primary */}
-          <div className="relative card p-5 md:p-8 border-accent-primary/30">
-            {/* Popular badge */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent-primary text-black text-sm font-bold">
-              Recommended
+          <div className="relative card p-5 md:p-8 border-energy-warm/30">
+            {/* Opens Q1 Badge */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-energy-warm text-black text-sm font-bold">
+              Opens Q1 2025
             </div>
 
             {/* Glow effect */}
-            <div className="absolute inset-0 rounded-2xl bg-card-glow opacity-50" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-energy-warm/10 to-transparent opacity-50" />
 
             <div className="relative">
               <h3 className="text-xl md:text-2xl font-bold mb-2">Founding Member</h3>
@@ -92,7 +92,7 @@ export default function Pricing() {
                 <span className="text-text-muted">deposit</span>
               </div>
               <p className="text-sm text-text-secondary mb-4 md:mb-6">
-                The deposit helps us prioritize early access for committed testers.
+                100% refundable anytime before launch—no questions asked.
               </p>
 
               {/* Benefits */}
@@ -102,10 +102,9 @@ export default function Pricing() {
                   "3 months of unlimited highlights FREE",
                   "Permanent Founder badge on your profile",
                   "Direct input on features we build",
-                  "100% refundable anytime before launch",
                 ].map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-accent-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-energy-warm flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-text-secondary">{benefit}</span>
@@ -114,24 +113,29 @@ export default function Pricing() {
               </ul>
 
               <button
-                onClick={handlePreorder}
-                className="btn-primary w-full text-center"
+                onClick={scrollToWaitlist}
+                className="w-full py-3 px-6 rounded-xl bg-energy-warm/20 border border-energy-warm/30 text-energy-warm font-semibold hover:bg-energy-warm/30 transition-colors"
                 data-event="pricing_click_founding_member"
               >
-                Reserve My Spot — £4.99
+                Coming Soon — Join Waitlist First
               </button>
 
               <p className="text-center text-xs text-text-muted mt-4">
-                Secure payment via Stripe. Cancel anytime.
+                Join the waitlist to be notified when Founding Member opens.
               </p>
             </div>
           </div>
 
-          {/* Free Waitlist - Secondary */}
-          <div className="card p-5 md:p-8">
-            <h3 className="text-xl md:text-2xl font-bold mb-2">Free Waitlist</h3>
+          {/* Free Waitlist - Primary now */}
+          <div className="relative card p-5 md:p-8 border-accent-primary/30">
+            {/* Recommended badge */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent-primary text-black text-sm font-bold">
+              Recommended
+            </div>
+
+            <h3 className="text-xl md:text-2xl font-bold mb-2 mt-2">Join the Waitlist</h3>
             <p className="text-sm md:text-base text-text-secondary mb-4 md:mb-6">
-              Not ready to commit? No worries—join the free waitlist.
+              Be first to know when Social Highlighter launches.
             </p>
 
             {/* Price */}
@@ -143,7 +147,7 @@ export default function Pricing() {
             <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
               {[
                 "Email notification when we launch",
-                "Early access (after Founding Members)",
+                "Priority access for UK testers",
                 "No commitment required",
               ].map((benefit, index) => (
                 <li key={index} className="flex items-start gap-3">
@@ -155,8 +159,8 @@ export default function Pricing() {
               ))}
             </ul>
 
-            {/* Waitlist form */}
-            <form onSubmit={handleWaitlistSubmit} className="space-y-4">
+            {/* Simplified Waitlist form */}
+            <form onSubmit={handleWaitlistSubmit} className="space-y-3">
               <input
                 type="email"
                 placeholder="Your email"
@@ -168,60 +172,27 @@ export default function Pricing() {
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                required
                 className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white focus:border-accent-primary focus:outline-none transition-colors appearance-none"
               >
-                <option value="" disabled className="text-text-muted">Select your role</option>
+                <option value="" className="text-text-muted">I&apos;m a... (optional)</option>
                 <option value="player">Player</option>
                 <option value="parent">Parent</option>
                 <option value="coach">Coach</option>
               </select>
-              <input
-                type="text"
-                placeholder="Club name (optional)"
-                value={clubName}
-                onChange={(e) => setClubName(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
-              />
-              <input
-                type="text"
-                placeholder="First name (optional)"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
-              />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-secondary w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-primary w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
                 data-event="pricing_submit_waitlist"
               >
-                {isSubmitting ? "Requesting..." : "Request early access"}
+                {isSubmitting ? "Joining..." : "Join the Waitlist — Free"}
               </button>
             </form>
 
             {/* Reassurance */}
             <p className="text-xs text-text-muted text-center mt-4">
-              No spam. One email when you can try it.
+              No spam. We&apos;ll invite UK testers first.
             </p>
-          </div>
-        </div>
-
-        {/* Reassurance below cards */}
-        <p className="text-sm text-text-muted text-center mt-6">
-          No spam. One email when you can try it.
-        </p>
-
-        {/* Trust signals */}
-        <div className="mt-8 md:mt-12 text-center">
-          <p className="text-text-muted text-sm mb-4">Trusted by players from</p>
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 opacity-50">
-            {/* Placeholder for club logos */}
-            {["Sunday League", "5-a-side", "Amateur FC"].map((club) => (
-              <span key={club} className="text-text-secondary font-medium">
-                {club}
-              </span>
-            ))}
           </div>
         </div>
       </div>

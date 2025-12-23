@@ -21,13 +21,13 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 
 ### Landing Page Structure
 `src/app/page.tsx` composes sections in order:
-1. Hero - "Early access" badge, headline, CTAs ("See How It Works" → `#demo`, "Request early access" → `#early-access`), video placeholder, floating stat cards
-2. SocialProof - Example IG posts, stats bar with footnote (moved up for proof-first approach)
+1. Hero - "Early access" badge, headline, **Veo camera badge** with FAQ link, CTAs ("See How It Works" primary → `#demo`, "Join the Waitlist" secondary → `#early-access`), **urgency badge** ("Founding Member pricing opens Q1 2025"), video placeholder, floating stat cards
+2. SocialProof - Example IG posts, **"Built on Veo" credibility card** with 50K+ cameras stat (replaced unverified user counts)
 3. Problem - 5-step narrative showing user pain points
-4. Demo (`#demo`) - Instruction line, interactive 3-step demo (timeline, face blur toggle, share simulation), "Get clips like this" CTA
+4. Demo (`#demo`) - Instruction line, interactive 3-step demo (timeline, face blur toggle, share simulation), **single CTA** ("Join the Waitlist — Free"), reality signal
 5. Features - "AI That Knows You" section showcasing 5 AI-powered features with rich mockups
-6. Pricing (`#early-access`) - Two-tier CTA (Founding Member £4.99 deposit + Free Waitlist with Role dropdown)
-7. FAQ - Expandable accordion with trust-focused answers
+6. Pricing (`#early-access`) - Two-tier: Founding Member (£4.99, **"Opens Q1 2025" badge**, Coming Soon state) + Free Waitlist (**Recommended**, simplified email + optional role form)
+7. FAQ - Accordion with trust-focused answers, **Veo requirement at #2**, **conversion CTA at end**
 8. Footer
 
 ### Interactive Demo (`/try`)
@@ -103,17 +103,17 @@ Landing page is optimized for mobile-first viewing:
 ### Key Components
 
 **Landing Page (`src/components/`):**
-- `Hero.tsx` - "Early access" badge, dual CTAs with anchor scroll, video placeholder
-- `SocialProof.tsx` - Example IG posts with "Examples" label, stats bar with transparency footnote
-- `Demo.tsx` - Instruction line, 3-step flow with `data-event` tracking, "Get clips like this" CTA
+- `Hero.tsx` - "Early access" badge, **Veo camera badge** ("Works with Veo cameras" + FAQ link), dual CTAs (primary: "See How It Works", secondary: "Join the Waitlist"), **urgency badge** with Q1 2025 messaging, video placeholder
+- `SocialProof.tsx` - Example IG posts with "Examples" label, **"Built on Veo" credibility card** (replaced stats bar)
+- `Demo.tsx` - Instruction line, 3-step flow with `data-event` tracking, **single CTA** ("Join the Waitlist — Free"), reality signal microcopy
 - `Features.tsx` - "AI That Knows You" section with 5 rich mockup feature cards:
   - Mum Gets Every Goal: iMessage mockup showing auto-share to family
   - You're Getting Better: Progress dashboard with stats and AI insights
   - Top 1%: Highlight card with glowing rarity badge and percentile bar
   - Your Season Story: Film-strip video preview for AI-generated season documentary
   - Coach's Notes: Highlight with AI analysis speech bubble
-- `Pricing.tsx` - Founding Member + Free Waitlist cards, Role dropdown (Player/Parent/Coach), `#early-access` anchor
-- `FAQ.tsx` - Accordion with trust-focused answers (tightened "Is this real?", pricing/process FAQs)
+- `Pricing.tsx` - Two cards: Founding Member (**"Opens Q1 2025" badge**, Coming Soon button) + Free Waitlist (**Recommended badge**, simplified form: email required + role optional), `#early-access` anchor
+- `FAQ.tsx` - Accordion with trust-focused answers, **Veo requirement moved to #2**, **conversion CTA** ("Ready to join?") at section end
 
 **Interactive Demo (`src/components/demo/`):**
 - `DemoPage.tsx` - Orchestrator managing 4-step belief demo flow + explore feature state
@@ -137,7 +137,7 @@ Landing page is optimized for mobile-first viewing:
 - Vercel Analytics enabled via `@vercel/analytics` in `src/app/layout.tsx`
 
 ## Not Yet Implemented
-- Stripe payment integration (preorder button shows alert)
+- Stripe payment integration (Founding Member button shows "Coming Soon" state, redirects to waitlist)
 - Backend/database for form submissions
 - Real video assets (using placeholders)
 - iOS push/pop slide transitions between demo steps
