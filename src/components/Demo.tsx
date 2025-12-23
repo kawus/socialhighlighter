@@ -112,22 +112,12 @@ export default function Demo() {
           ))}
         </div>
 
-        {/* Instruction line */}
-        <p className="text-center text-sm md:text-base text-text-secondary mb-6 md:mb-8">
-          Click a moment → watch the clip → toggle privacy blur → export-ready.
-        </p>
-
         {/* Demo container */}
         <div className="max-w-5xl mx-auto">
-          {/* Current step info */}
-          <div className="text-center mb-6 md:mb-8">
-            <h3 className="text-xl md:text-3xl font-bold md:mb-3">
-              {stepInfo[currentStep].title}
-            </h3>
-            <p className="hidden md:block text-text-secondary max-w-xl mx-auto">
-              {stepInfo[currentStep].description}
-            </p>
-          </div>
+          {/* Current step title */}
+          <h3 className="text-center text-xl md:text-2xl font-bold mb-6 md:mb-8">
+            {stepInfo[currentStep].title}
+          </h3>
 
           {/* Interactive demo area */}
           <div className="relative rounded-2xl overflow-hidden bg-bg-secondary border border-white/10">
