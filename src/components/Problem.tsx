@@ -45,7 +45,7 @@ export default function Problem() {
 
       <div className="section-container relative z-10">
         {/* Section header */}
-        <div className="text-center mb-10 md:mb-24">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-6">
             Your Best Goal{" "}
             <span className="text-energy-hot">Deserves Better</span>
@@ -60,16 +60,16 @@ export default function Problem() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative flex items-start gap-4 md:gap-6 mb-8 md:mb-12 last:mb-0"
+              className="relative flex items-start gap-4 md:gap-6 mb-4 md:mb-6 last:mb-0"
             >
               {/* Connector line */}
               {index < steps.length - 1 && (
-                <div className="absolute left-6 md:left-8 top-12 md:top-16 w-0.5 h-full bg-gradient-to-b from-white/20 to-transparent" />
+                <div className="absolute left-5 md:left-7 top-10 md:top-14 w-0.5 h-full bg-gradient-to-b from-white/20 to-transparent" />
               )}
 
               {/* Icon */}
               <div
-                className={`flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-2xl
+                className={`flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center text-lg md:text-xl
                   ${index === steps.length - 1 ? "bg-energy-hot/20" : "bg-bg-tertiary"}
                   border border-white/10`}
               >
@@ -84,16 +84,12 @@ export default function Problem() {
                 <p className="hidden md:block text-text-secondary">{step.description}</p>
               </div>
 
-              {/* Step number */}
-              <div className="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-white/5 text-text-muted text-sm font-mono">
-                {index + 1}
-              </div>
             </div>
           ))}
         </div>
 
         {/* Transition to solution */}
-        <div className="mt-20 text-center">
+        <div className="mt-10 md:mt-12 text-center">
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-primary/10 border border-accent-primary/20">
             <span className="text-accent-primary font-semibold">
               There&apos;s a better way
