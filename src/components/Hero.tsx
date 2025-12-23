@@ -84,32 +84,36 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Hero Video/Image Placeholder */}
+        {/* Hero Video/Image Placeholder - Clickable → /try */}
         <div className="mt-10 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>
           <div className="relative max-w-4xl mx-auto">
             {/* Video frame with glow */}
-            <div className="relative rounded-2xl overflow-hidden bg-bg-secondary border border-white/10 shadow-2xl">
+            <a
+              href="/try"
+              className="group relative block rounded-2xl overflow-hidden bg-bg-secondary border border-white/10 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:border-accent-primary/30 hover:shadow-glow"
+              data-event="hero_try_demo"
+            >
               {/* Ambient glow */}
-              <div className="absolute -inset-4 bg-gradient-radial from-accent-primary/20 to-transparent blur-2xl opacity-50" />
+              <div className="absolute -inset-4 bg-gradient-radial from-accent-primary/20 to-transparent blur-2xl opacity-50 group-hover:opacity-80 transition-opacity" />
 
               {/* Video placeholder */}
               <div className="relative aspect-video bg-bg-tertiary flex items-center justify-center">
                 {/* Placeholder content */}
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-accent-primary/20 flex items-center justify-center backdrop-blur-sm border border-accent-primary/30">
-                    <svg className="w-8 h-8 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-accent-primary/20 flex items-center justify-center backdrop-blur-sm border border-accent-primary/30 group-hover:bg-accent-primary/30 group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-8 h-8 text-accent-primary" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
-                  <p className="text-white font-semibold mb-1">
-                    Get invited to the demo
+                  <p className="text-white font-semibold mb-1 group-hover:text-accent-primary transition-colors">
+                    Try Interactive Demo
                   </p>
                   <p className="text-text-muted text-sm">
-                    See your highlights in action
+                    Experience the full iOS app →
                   </p>
                 </div>
               </div>
-            </div>
+            </a>
 
             {/* Floating stats cards */}
             <div className="absolute right-1 md:-right-12 top-4 md:top-8 p-2 md:p-4 rounded-lg md:rounded-xl bg-bg-tertiary/90 backdrop-blur-md border border-white/10 shadow-xl animate-fade-up" style={{ animationDelay: "0.5s" }}>

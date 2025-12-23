@@ -281,6 +281,17 @@ export default function Demo() {
             <p className="text-sm text-text-muted mt-3">
               Example from a real amateur match.
             </p>
+            {/* Secondary link to full interactive demo */}
+            <a
+              href="/try"
+              className="inline-flex items-center gap-1.5 mt-4 text-sm text-text-secondary hover:text-accent-primary transition-colors"
+              data-event="demo_try_full_experience"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              Or try the full iOS experience →
+            </a>
           </div>
         </div>
       </div>
