@@ -2,28 +2,15 @@
 
 import { Highlight, getHighlightIcon } from "./constants";
 
-interface BlurPreviewProps {
+interface RarityRevealProps {
   highlight: Highlight | null;
-  blurEnabled: boolean;
-  onToggleBlur: () => void;
   onContinue: () => void;
-  hasToggledBlur?: boolean;
 }
 
-// Simulated face positions for blur circles
-const facePositions = [
-  { x: 25, y: 35, size: 40 },
-  { x: 70, y: 40, size: 35 },
-  { x: 45, y: 60, size: 30 },
-];
-
-export default function BlurPreview({
+export default function RarityReveal({
   highlight,
-  blurEnabled,
-  onToggleBlur,
   onContinue,
-  hasToggledBlur = false,
-}: BlurPreviewProps) {
+}: RarityRevealProps) {
   return (
     <div className="flex flex-col h-full px-4 pt-2 pb-[34px]">
       {/* Video preview area */}
@@ -62,36 +49,6 @@ export default function BlurPreview({
           </div>
         )}
 
-        {/* Face blur circles */}
-        {facePositions.map((face, index) => (
-          <div
-            key={index}
-            className={`absolute rounded-full transition-all duration-500 ease-out
-              ${blurEnabled
-                ? "bg-white/20 backdrop-blur-xl scale-100 opacity-100"
-                : "bg-transparent backdrop-blur-0 scale-75 opacity-0"
-              }
-            `}
-            style={{
-              left: `${face.x}%`,
-              top: `${face.y}%`,
-              width: face.size,
-              height: face.size,
-              transform: `translate(-50%, -50%) ${blurEnabled ? "scale(1)" : "scale(0.75)"}`,
-              transitionDelay: `${index * 100}ms`,
-            }}
-          >
-            {/* Face silhouette hint */}
-            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300
-              ${blurEnabled ? "opacity-30" : "opacity-0"}`}>
-              <svg width="60%" height="60%" viewBox="0 0 24 24" fill="white">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              </svg>
-            </div>
-          </div>
-        ))}
-
         {/* Play button overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
@@ -107,33 +64,20 @@ export default function BlurPreview({
         </div>
       </div>
 
-      {/* Face Blur Toggle - iOS Style */}
+      {/* Rarity explanation card */}
       <div className="bg-[#1C1C1E] rounded-[12px] p-4 mb-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-10 h-10 rounded-full bg-[#FFB800]/20 flex items-center justify-center">
+            <span className="text-xl">🏆</span>
+          </div>
           <div>
-            <h3 className="text-[17px] font-semibold text-white mb-1">
-              Privacy Mode
+            <h3 className="text-[17px] font-semibold text-white">
+              Your Moment Rating
             </h3>
             <p className="text-[13px] text-white/50">
-              Everyone except you stays anonymous
+              AI analyzes what makes it special
             </p>
           </div>
-
-          {/* iOS-style toggle */}
-          <button
-            onClick={onToggleBlur}
-            data-event="try_demo_toggle_blur"
-            className={`relative w-[51px] h-[31px] rounded-full transition-colors duration-300
-              ${blurEnabled ? "bg-[#30D158]" : "bg-[#39393D]"}
-              ${!hasToggledBlur ? "ring-2 ring-[#30D158]/50 animate-pulse" : ""}
-            `}
-          >
-            <div
-              className={`absolute top-[2px] w-[27px] h-[27px] rounded-full bg-white shadow-md transition-transform duration-300
-                ${blurEnabled ? "left-[22px]" : "left-[2px]"}
-              `}
-            />
-          </button>
         </div>
       </div>
 
@@ -162,23 +106,6 @@ export default function BlurPreview({
             </div>
           </div>
         </div>
-      )}
-
-      {/* Status indicator */}
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <div className={`w-2 h-2 rounded-full transition-colors duration-300
-          ${blurEnabled ? "bg-[#30D158]" : "bg-[#FF453A]"}`}
-        />
-        <span className="text-[13px] text-white/60">
-          Face blur {blurEnabled ? "enabled" : "disabled"}
-        </span>
-      </div>
-
-      {/* Hint to toggle blur */}
-      {!hasToggledBlur && (
-        <p className="text-[12px] text-[#30D158] text-center mb-4 animate-pulse">
-          ↑ Try toggling the privacy switch above
-        </p>
       )}
 
       {/* Continue button */}

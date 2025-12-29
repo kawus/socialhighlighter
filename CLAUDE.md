@@ -24,7 +24,7 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 1. Hero - "Early access" badge, headline, **Veo camera badge** with FAQ link, CTAs ("See How It Works" primary → `#demo`, "Join the Waitlist" secondary → `#early-access`), **clickable video placeholder** (→ `/try`), floating stat cards
 2. SocialProof - Example IG posts with **Unsplash grassroots football images**, **"Built on Veo" credibility card** with 50K+ cameras stat
 3. Problem - 5-step narrative showing user pain points
-4. Demo (`#demo`) - Interactive 3-step demo (timeline, face blur toggle, share simulation), **single CTA** ("Join the Waitlist — Free"), **secondary /try link** ("Or try the full iOS experience →")
+4. Demo (`#demo`) - Interactive 3-step demo (timeline, AI rarity badge, share simulation), **single CTA** ("Join the Waitlist — Free"), **secondary /try link** ("Or try the full iOS experience →")
 5. Features - "AI That Knows You" section showcasing 5 AI-powered features with rich mockups
 6. Pricing (`#early-access`) - Two-tier: Early Access (£4.99, active "Get Early Access" CTA) + Free Waitlist (**Recommended**, simplified email + optional role form)
 7. FAQ - Accordion with trust-focused answers, **Veo requirement at #2**, **conversion CTA at end**
@@ -33,7 +33,7 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 ### Interactive Demo (`/try`)
 Streamlined "belief demo" at `src/app/try/`. Designed for instant "wow" + clear conversion path. 4-step flow:
 1. Highlight Selection - Pre-selected "Goal — 67:38", timeline + 3 moment cards, Continue button
-2. Blur Preview - Face blur toggle with hint animation, **AI rarity badge** (TOP 1% etc.), rarity insight card, Continue button
+2. Rarity Reveal - **AI rarity badge** (TOP 1% etc.), rarity insight card, Continue button
 3. Share Sheet - Instagram share simulation
 4. Success - Confetti + "Request early access" CTA + **Explore Hub** with AI feature previews
 
@@ -46,9 +46,9 @@ Both lead to "Request early access" with clear expectation-setting microcopy.
 **Key UX patterns:**
 - **Instant win**: Demo loads with best highlight already selected (no blank state)
 - **User-triggered progression**: No auto-advancing; user clicks Continue to proceed
-- **Instruction line**: "Click a moment → watch the clip → toggle privacy blur → share."
+- **Instruction line**: "Click a moment → see your rating → share to Instagram."
 - **Reality signal**: "Example clip from a real amateur match." shown below instructions
-- **AI validation**: Rarity badge + insight card in BlurPreview makes user feel their moment is special
+- **AI validation**: Rarity badge + insight card in RarityReveal makes user feel their moment is special
 - **Conversion bridge**: Success screen links to `/#early-access` with microcopy "No spam. We'll invite UK testers first."
 
 **Analytics instrumentation** (data-event attributes for future wiring):
@@ -62,7 +62,6 @@ Landing page:
 Interactive demo (/try):
 - `try_demo_loaded` - Main container
 - `try_demo_click_moment` - Timeline markers + highlight cards
-- `try_demo_toggle_blur` - Privacy toggle
 - `try_demo_rarity_viewed` - When rarity badge appears
 - `try_demo_share` - Instagram share button
 - `try_demo_request_early_access` - Final CTA
@@ -126,7 +125,7 @@ Landing page is optimized for mobile-first viewing:
 **Interactive Demo (`src/components/demo/`):**
 - `DemoPage.tsx` - Orchestrator managing 4-step belief demo flow + explore feature state
 - `HighlightReveal.tsx` - Timeline + highlight cards with default selection, Continue button
-- `BlurPreview.tsx` - Video placeholder with face blur toggle, hint animation, rarity badge + insight card
+- `RarityReveal.tsx` - Video placeholder with rarity badge + insight card (AI rates your moment)
 - `ShareSheet.tsx` - Instagram-style share UI with `data-event` tracking
 - `DemoSuccess.tsx` - Confetti + "Request early access" CTA + Explore Hub with feature cards
 - `SeasonStoryPreview.tsx` - Cinematic season documentary preview with film-strip UI, stats, AI insight

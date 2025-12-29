@@ -6,7 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Social Highlighter | From Pitch to Post in 60 Seconds",
   description:
-    "Your goals, found by AI, privacy-protected, ready for Instagram—before you leave the pitch. Join the waitlist for early access.",
+    "Your goals, found by AI, rated for rarity, ready for Instagram—before you leave the pitch. Join the waitlist for early access.",
   keywords: [
     "football highlights",
     "soccer highlights",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Social Highlighter | From Pitch to Post in 60 Seconds",
     description:
-      "Your goals, found by AI, privacy-protected, ready for Instagram—before you leave the pitch.",
+      "Your goals, found by AI, rated for rarity, ready for Instagram—before you leave the pitch.",
     type: "website",
   },
 };

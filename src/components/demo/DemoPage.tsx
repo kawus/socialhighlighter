@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Highlight, mockHighlights, ExploreFeature } from "./constants";
 import IOSStatusBar from "../ios/IOSStatusBar";
@@ -9,13 +9,13 @@ import IPhoneFrame from "../ios/IPhoneFrame";
 
 // Step components
 import HighlightReveal from "./HighlightReveal";
-import BlurPreview from "./BlurPreview";
+import RarityReveal from "./RarityReveal";
 import ShareSheet from "./ShareSheet";
 import DemoSuccess from "./DemoSuccess";
 import SeasonStoryPreview from "./SeasonStoryPreview";
 import Top1Preview from "./Top1Preview";
 
-// Simplified demo steps: 1=Highlights, 2=BlurPreview, 3=Share, 4=Success
+// Simplified demo steps: 1=Highlights, 2=RarityReveal, 3=Share, 4=Success
 type BeliefDemoStep = 1 | 2 | 3 | 4;
 
 // The "best" highlight to auto-select on load (Goal at 67:38)
@@ -26,9 +26,6 @@ export default function DemoPage() {
   // Start at step 1 with a highlight already selected (instant "win")
   const [currentStep, setCurrentStep] = useState<BeliefDemoStep>(1);
   const [selectedHighlight, setSelectedHighlight] = useState<Highlight>(defaultHighlight);
-  const [faceBlurEnabled, setFaceBlurEnabled] = useState(true);
-  // Track if user has toggled blur at least once
-  const hasToggledBlurRef = useRef(false);
   // Track which AI feature is being explored (null = not exploring)
   const [activeExplore, setActiveExplore] = useState<ExploreFeature>(null);
 
@@ -45,12 +42,7 @@ export default function DemoPage() {
     setCurrentStep(2);
   }, []);
 
-  const handleToggleBlur = useCallback(() => {
-    setFaceBlurEnabled((prev) => !prev);
-    hasToggledBlurRef.current = true;
-  }, []);
-
-  const handleContinueFromBlur = useCallback(() => {
+  const handleContinueFromRarity = useCallback(() => {
     setCurrentStep(3);
   }, []);
 
@@ -92,12 +84,9 @@ export default function DemoPage() {
         );
       case 2:
         return (
-          <BlurPreview
+          <RarityReveal
             highlight={selectedHighlight}
-            blurEnabled={faceBlurEnabled}
-            onToggleBlur={handleToggleBlur}
-            onContinue={handleContinueFromBlur}
-            hasToggledBlur={hasToggledBlurRef.current}
+            onContinue={handleContinueFromRarity}
           />
         );
       case 3:
@@ -112,7 +101,7 @@ export default function DemoPage() {
   // Nav title for each step
   const navTitles: Record<BeliefDemoStep, string> = {
     1: "Your Highlights",
-    2: "Preview",
+    2: "Your Rating",
     3: "Share",
     4: "",
   };
@@ -132,7 +121,7 @@ export default function DemoPage() {
       {currentStep < 4 && !activeExplore && (
         <div className="px-4 pt-4 pb-2">
           <p className="text-[13px] text-white/50 text-center">
-            Click a moment → watch the clip → toggle privacy blur → share.
+            Click a moment → see your rating → share to Instagram.
           </p>
         </div>
       )}

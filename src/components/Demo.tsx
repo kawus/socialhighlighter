@@ -23,8 +23,8 @@ const stepInfo = {
     description: "AI watches the full match so you don't have to. Click any highlight to jump straight to your best moments.",
   },
   2: {
-    title: "Privacy Protected",
-    description: "Everyone else stays anonymous. Toggle face blur to share safely on social media.",
+    title: "See Your Rating",
+    description: "AI rates how special your moment was. Turn your Sunday league screamer into shareable bragging rights.",
   },
   3: {
     title: "Ready for Instagram",
@@ -35,7 +35,6 @@ const stepInfo = {
 export default function Demo() {
   const [currentStep, setCurrentStep] = useState<DemoStep>(1);
   const [selectedHighlight, setSelectedHighlight] = useState<Highlight | null>(highlights[0]);
-  const [faceBlurEnabled, setFaceBlurEnabled] = useState(true);
   const [isSharing, setIsSharing] = useState(false);
 
   const handleHighlightClick = (highlight: Highlight) => {
@@ -149,32 +148,17 @@ export default function Demo() {
                           : "Select a highlight below"}
                       </p>
                       {currentStep === 2 && (
-                        <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10">
-                          <span className={`w-3 h-3 rounded-full ${faceBlurEnabled ? "bg-accent-primary" : "bg-energy-hot"}`} />
-                          <span className="text-sm">Face blur {faceBlurEnabled ? "ON" : "OFF"}</span>
+                        <div className="mt-4">
+                          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-energy-warm to-orange-500 text-black font-bold animate-pulse">
+                            <span className="text-lg">🏆</span>
+                            <span className="text-sm">TOP 5% MOMENT</span>
+                          </div>
+                          <p className="text-xs text-text-muted mt-2">Scored from 20 yards — rare for Sunday league!</p>
                         </div>
                       )}
                     </div>
                   )}
                 </div>
-
-                {/* Face blur toggle overlay - Step 2 */}
-                {currentStep === 2 && (
-                  <div className="absolute top-4 right-4">
-                    <button
-                      onClick={() => setFaceBlurEnabled(!faceBlurEnabled)}
-                      className={`flex items-center gap-3 px-4 py-2 rounded-xl transition-all duration-300
-                        ${faceBlurEnabled ? "bg-accent-primary text-black" : "bg-bg-tertiary text-white border border-white/20"}`}
-                    >
-                      <span className="font-semibold text-sm">Face Blur</span>
-                      <div className={`w-10 h-6 rounded-full relative transition-colors duration-300
-                        ${faceBlurEnabled ? "bg-black/20" : "bg-white/20"}`}>
-                        <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform duration-300
-                          ${faceBlurEnabled ? "left-5" : "left-1"}`} />
-                      </div>
-                    </button>
-                  </div>
-                )}
 
                 {/* Share button - Step 3 */}
                 {currentStep === 3 && !isSharing && (

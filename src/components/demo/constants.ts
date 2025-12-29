@@ -101,7 +101,7 @@ export const stepInfo: Record<DemoStep, { title: string; navTitle: string }> = {
   2: { title: "Select Match", navTitle: "Matches" },
   3: { title: "Processing", navTitle: "Analyzing" },
   4: { title: "Your Highlights", navTitle: "Highlights" },
-  5: { title: "Privacy", navTitle: "Preview" },
+  5: { title: "Your Rating", navTitle: "Rating" },
   6: { title: "Share", navTitle: "Share" },
   7: { title: "Success", navTitle: "" },
 };

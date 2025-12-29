@@ -34,11 +34,6 @@ const faqs = [
       "Our AI analyzes the full match footage to automatically detect key moments—goals, assists, saves, and more. It identifies players and tags the highlights to you, so they're ready to share without any manual searching.",
   },
   {
-    question: "Is my privacy protected?",
-    answer:
-      "Absolutely. Our face blur technology automatically obscures everyone except you in your highlights. This means you can share freely on social media without worrying about other players' privacy.",
-  },
-  {
     question: "What if it doesn't meet my expectations?",
     answer:
       "If you get Early Access, your £4.99 deposit is 100% refundable anytime before launch—no questions asked.",
