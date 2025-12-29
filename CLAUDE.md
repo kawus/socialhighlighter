@@ -111,7 +111,7 @@ Landing page is optimized for mobile-first viewing:
 ### Key Components
 
 **Landing Page (`src/components/`):**
-- `Hero.tsx` - "Early access" badge, **Veo camera badge** ("Works with Veo cameras" + FAQ link), dual CTAs (primary: "See How It Works", secondary: "Join the Waitlist"), **clickable video placeholder** (→ `/try` with hover effects)
+- `Hero.tsx` - "Early access" badge, **Veo camera badge** ("Works with Veo Cam & Veo Go" + FAQ link), dual CTAs (primary: "See How It Works", secondary: "Join the Waitlist"), **clickable video placeholder** (→ `/try` with hover effects)
 - `SocialProof.tsx` - Example IG posts with **Unsplash grassroots football images** (lazy-loaded), "Examples" label, **"Built on Veo" credibility card**
 - `Demo.tsx` - Minimal text (step title only), 3-step flow with `data-event` tracking, **single CTA** ("Join the Waitlist — Free"), **secondary /try link**
 - `Features.tsx` - "AI That Knows You" section with 5 rich mockup feature cards:
