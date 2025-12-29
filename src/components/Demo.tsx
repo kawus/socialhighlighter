@@ -113,11 +113,6 @@ export default function Demo() {
 
         {/* Demo container */}
         <div className="max-w-5xl mx-auto">
-          {/* Current step title */}
-          <h3 className="text-center text-xl md:text-2xl font-bold mb-6 md:mb-8">
-            {stepInfo[currentStep].title}
-          </h3>
-
           {/* Interactive demo area */}
           <div className="relative rounded-2xl overflow-hidden bg-bg-secondary border border-white/10">
             {/* Ambient glow */}
