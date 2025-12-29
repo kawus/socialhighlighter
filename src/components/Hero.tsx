@@ -116,13 +116,12 @@ export default function Hero() {
               <div className="flex items-center gap-2 md:gap-3">
                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-energy-warm/20 flex items-center justify-center">
                   <svg className="w-4 h-4 md:w-5 md:h-5 text-energy-warm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[10px] md:text-xs text-text-muted uppercase tracking-wider">Privacy</p>
-                  <p className="text-sm md:text-lg font-bold text-white">Face Blur</p>
+                  <p className="text-[10px] md:text-xs text-text-muted uppercase tracking-wider">Progress</p>
+                  <p className="text-sm md:text-lg font-bold text-white">AI Tracked</p>
                 </div>
               </div>
             </div>
