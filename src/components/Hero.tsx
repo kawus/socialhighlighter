@@ -39,23 +39,13 @@ export default function Hero() {
         </p>
 
         {/* Veo Requirement Badge */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-8 animate-fade-up" style={{ animationDelay: "0.15s" }}>
+        <div className="flex items-center justify-center mb-8 animate-fade-up" style={{ animationDelay: "0.15s" }}>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bg-tertiary/80 border border-white/10">
             <svg className="w-4 h-4 text-accent-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
             <span className="text-sm text-text-secondary">Works with Veo Cam & Veo Go</span>
           </div>
-          <a
-            href="#faq"
-            className="text-sm text-text-muted hover:text-accent-primary transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            Don&apos;t have Veo? Check if your club does →
-          </a>
         </div>
 
         {/* CTA Buttons */}
