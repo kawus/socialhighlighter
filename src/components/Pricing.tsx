@@ -70,20 +70,15 @@ export default function Pricing() {
 
         {/* Pricing cards */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-          {/* Founding Member - Primary */}
+          {/* Early Access - Primary */}
           <div className="relative card p-5 md:p-8 border-energy-warm/30">
-            {/* Opens Q1 Badge */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-energy-warm text-black text-sm font-bold">
-              Opens Q1 2025
-            </div>
-
             {/* Glow effect */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-energy-warm/10 to-transparent opacity-50" />
 
             <div className="relative">
-              <h3 className="text-xl md:text-2xl font-bold mb-2">Founding Member</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-2">Early Access</h3>
               <p className="text-sm md:text-base text-text-secondary mb-4 md:mb-6">
-                Lock in early access with a fully refundable deposit.
+                Be first to experience Social Highlighter.
               </p>
 
               {/* Price */}
@@ -100,7 +95,7 @@ export default function Pricing() {
                 {[
                   "First access when we launch",
                   "3 months of unlimited highlights FREE",
-                  "Permanent Founder badge on your profile",
+                  "Early Access badge on your profile",
                   "Direct input on features we build",
                 ].map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
@@ -114,14 +109,14 @@ export default function Pricing() {
 
               <button
                 onClick={scrollToWaitlist}
-                className="w-full py-3 px-6 rounded-xl bg-energy-warm/20 border border-energy-warm/30 text-energy-warm font-semibold hover:bg-energy-warm/30 transition-colors"
-                data-event="pricing_click_founding_member"
+                className="w-full py-3 px-6 rounded-xl bg-energy-warm text-black font-semibold hover:bg-energy-warm/90 transition-colors"
+                data-event="pricing_click_early_access"
               >
-                Coming Soon — Join Waitlist First
+                Get Early Access
               </button>
 
               <p className="text-center text-xs text-text-muted mt-4">
-                Join the waitlist to be notified when Founding Member opens.
+                Secure your spot today.
               </p>
             </div>
           </div>

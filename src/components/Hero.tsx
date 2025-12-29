@@ -76,14 +76,6 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Urgency Badge */}
-        <div className="flex items-center justify-center gap-2 mt-4 animate-fade-up" style={{ animationDelay: "0.25s" }}>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-energy-warm/10 border border-energy-warm/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-energy-warm animate-pulse" />
-            <span className="text-xs font-medium text-energy-warm">Founding Member pricing opens Q1 2025</span>
-          </span>
-        </div>
-
         {/* Hero Video/Image Placeholder - Clickable → /try */}
         <div className="mt-10 md:mt-24 animate-fade-up" style={{ animationDelay: "0.3s" }}>
           <div className="relative max-w-4xl mx-auto">

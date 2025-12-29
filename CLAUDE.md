@@ -21,12 +21,12 @@ Landing page + interactive demo for Social Highlighter (Veo product). Built with
 
 ### Landing Page Structure
 `src/app/page.tsx` composes sections in order:
-1. Hero - "Early access" badge, headline, **Veo camera badge** with FAQ link, CTAs ("See How It Works" primary → `#demo`, "Join the Waitlist" secondary → `#early-access`), **urgency badge** ("Founding Member pricing opens Q1 2025"), **clickable video placeholder** (→ `/try`), floating stat cards
+1. Hero - "Early access" badge, headline, **Veo camera badge** with FAQ link, CTAs ("See How It Works" primary → `#demo`, "Join the Waitlist" secondary → `#early-access`), **clickable video placeholder** (→ `/try`), floating stat cards
 2. SocialProof - Example IG posts with **Unsplash grassroots football images**, **"Built on Veo" credibility card** with 50K+ cameras stat
 3. Problem - 5-step narrative showing user pain points
 4. Demo (`#demo`) - Interactive 3-step demo (timeline, face blur toggle, share simulation), **single CTA** ("Join the Waitlist — Free"), **secondary /try link** ("Or try the full iOS experience →")
 5. Features - "AI That Knows You" section showcasing 5 AI-powered features with rich mockups
-6. Pricing (`#early-access`) - Two-tier: Founding Member (£4.99, **"Opens Q1 2025" badge**, Coming Soon state) + Free Waitlist (**Recommended**, simplified email + optional role form)
+6. Pricing (`#early-access`) - Two-tier: Early Access (£4.99, active "Get Early Access" CTA) + Free Waitlist (**Recommended**, simplified email + optional role form)
 7. FAQ - Accordion with trust-focused answers, **Veo requirement at #2**, **conversion CTA at end**
 8. Footer
 
@@ -111,7 +111,7 @@ Landing page is optimized for mobile-first viewing:
 ### Key Components
 
 **Landing Page (`src/components/`):**
-- `Hero.tsx` - "Early access" badge, **Veo camera badge** ("Works with Veo cameras" + FAQ link), dual CTAs (primary: "See How It Works", secondary: "Join the Waitlist"), **urgency badge** with Q1 2025 messaging, **clickable video placeholder** (→ `/try` with hover effects)
+- `Hero.tsx` - "Early access" badge, **Veo camera badge** ("Works with Veo cameras" + FAQ link), dual CTAs (primary: "See How It Works", secondary: "Join the Waitlist"), **clickable video placeholder** (→ `/try` with hover effects)
 - `SocialProof.tsx` - Example IG posts with **Unsplash grassroots football images** (lazy-loaded), "Examples" label, **"Built on Veo" credibility card**
 - `Demo.tsx` - Minimal text (step title only), 3-step flow with `data-event` tracking, **single CTA** ("Join the Waitlist — Free"), **secondary /try link**
 - `Features.tsx` - "AI That Knows You" section with 5 rich mockup feature cards:
@@ -120,7 +120,7 @@ Landing page is optimized for mobile-first viewing:
   - Top 1%: Highlight card with glowing rarity badge and percentile bar
   - Your Season Story: Film-strip video preview for AI-generated season documentary
   - Coach's Notes: Highlight with AI analysis speech bubble
-- `Pricing.tsx` - Two cards: Founding Member (**"Opens Q1 2025" badge**, Coming Soon button) + Free Waitlist (**Recommended badge**, simplified form: email required + role optional), `#early-access` anchor
+- `Pricing.tsx` - Two cards: Early Access (£4.99, active "Get Early Access" button) + Free Waitlist (**Recommended badge**, simplified form: email required + role optional), `#early-access` anchor
 - `FAQ.tsx` - Accordion with trust-focused answers, **Veo requirement moved to #2**, **conversion CTA** ("Ready to join?") at section end
 
 **Interactive Demo (`src/components/demo/`):**
@@ -145,7 +145,7 @@ Landing page is optimized for mobile-first viewing:
 - Vercel Analytics enabled via `@vercel/analytics` in `src/app/layout.tsx`
 
 ## Not Yet Implemented
-- Stripe payment integration (Founding Member button shows "Coming Soon" state, redirects to waitlist)
+- Stripe payment integration (Early Access button currently scrolls to waitlist)
 - Backend/database for form submissions
 - Real video assets (using placeholders)
 - iOS push/pop slide transitions between demo steps

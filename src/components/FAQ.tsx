@@ -21,12 +21,12 @@ const faqs = [
   {
     question: "When will it launch?",
     answer:
-      "We're targeting Q2 2025. Founding Members (opening Q1 2025) will get first access, followed by waitlist members.",
+      "We're targeting Q2 2025. Early Access members will get first access, followed by waitlist members.",
   },
   {
     question: "What will it cost?",
     answer:
-      "Pricing is still being finalized. Founding Members will get 3 months free to help us get it right.",
+      "Pricing is still being finalized. Early Access members will get 3 months free to help us get it right.",
   },
   {
     question: "How does the AI find my highlights?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "What if it doesn't meet my expectations?",
     answer:
-      "If you become a Founding Member, your £4.99 deposit is 100% refundable anytime before launch—no questions asked.",
+      "If you get Early Access, your £4.99 deposit is 100% refundable anytime before launch—no questions asked.",
   },
 ];
 
