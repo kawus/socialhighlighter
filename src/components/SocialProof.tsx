@@ -80,8 +80,12 @@ export default function SocialProof() {
                   loading="lazy"
                 />
                 {/* Veo watermark */}
-                <div className="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/50 backdrop-blur-sm">
-                  <span className="text-xs font-bold text-white/80">VEO</span>
+                <div className="absolute bottom-3 right-3 px-1.5 py-1 rounded bg-black/60 backdrop-blur-sm">
+                  <img
+                    src="/veo-logo.png"
+                    alt="Veo"
+                    className="h-4 w-auto"
+                  />
                 </div>
               </div>
 
@@ -128,10 +132,14 @@ export default function SocialProof() {
         {/* Powered by Veo credibility */}
         <div className="mt-10 md:mt-16 max-w-3xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 p-6 md:p-8 rounded-2xl bg-bg-tertiary/50 border border-white/5">
-            {/* Veo logo placeholder */}
+            {/* Veo logo */}
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                <span className="text-xl font-black text-white">V</span>
+              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center p-2">
+                <img
+                  src="/veo-logo.png"
+                  alt="Veo"
+                  className="w-full h-auto"
+                />
               </div>
               <div>
                 <p className="font-bold text-white">Built on Veo</p>
