@@ -173,7 +173,7 @@ export default function Pricing() {
                     onChange={(e) => setRole(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white focus:border-accent-primary focus:outline-none transition-colors appearance-none"
                   >
-                    <option value="" className="text-text-muted">I&apos;m a... (optional)</option>
+                    <option value="" className="text-text-muted">Your role (optional)</option>
                     <option value="player">Player</option>
                     <option value="parent">Parent</option>
                     <option value="coach">Coach</option>
