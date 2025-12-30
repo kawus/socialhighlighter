@@ -219,21 +219,6 @@ export default function Demo() {
             </div>
           </div>
 
-          {/* Next step prompt */}
-          {currentStep < 3 && (
-            <div className="mt-6 md:mt-8 text-center">
-              <button
-                onClick={() => setCurrentStep((currentStep + 1) as DemoStep)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-bg-tertiary text-white font-semibold hover:bg-bg-tertiary/80 transition-colors"
-              >
-                Next: {stepInfo[(currentStep + 1) as DemoStep].title}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          )}
-
           {/* Single clear CTA */}
           <div className="mt-8 md:mt-12 text-center">
             <p className="text-text-secondary mb-4">Want clips like this for your matches?</p>
