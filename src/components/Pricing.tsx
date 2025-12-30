@@ -75,7 +75,7 @@ export default function Pricing() {
             {/* Glow effect */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-energy-warm/10 to-transparent opacity-50" />
 
-            <div className="relative">
+            <div className="relative flex flex-col h-full">
               <h3 className="text-xl md:text-2xl font-bold mb-2">Early Access</h3>
               <p className="text-sm md:text-base text-text-secondary mb-4 md:mb-6">
                 Be first to experience Social Highlighter.
@@ -107,17 +107,19 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button
-                onClick={scrollToWaitlist}
-                className="w-full py-3 px-6 rounded-xl bg-energy-warm text-black font-semibold hover:bg-energy-warm/90 transition-colors"
-                data-event="pricing_click_early_access"
-              >
-                Get Early Access
-              </button>
+              <div className="mt-auto">
+                <button
+                  onClick={scrollToWaitlist}
+                  className="w-full py-3 px-6 rounded-xl bg-energy-warm text-black font-semibold hover:bg-energy-warm/90 transition-colors"
+                  data-event="pricing_click_early_access"
+                >
+                  Get Early Access
+                </button>
 
-              <p className="text-center text-xs text-text-muted mt-4">
-                Secure your spot today.
-              </p>
+                <p className="text-center text-xs text-text-muted mt-4">
+                  Secure your spot today.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -128,7 +130,8 @@ export default function Pricing() {
               Recommended
             </div>
 
-            <h3 className="text-xl md:text-2xl font-bold mb-2 mt-2">Join the Waitlist</h3>
+            <div className="flex flex-col h-full">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 mt-2">Join the Waitlist</h3>
             <p className="text-sm md:text-base text-text-secondary mb-4 md:mb-6">
               Be first to know when Social Highlighter launches.
             </p>
@@ -154,40 +157,43 @@ export default function Pricing() {
               ))}
             </ul>
 
-            {/* Simplified Waitlist form */}
-            <form onSubmit={handleWaitlistSubmit} className="space-y-3">
-              <input
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
-              />
-              <select
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white focus:border-accent-primary focus:outline-none transition-colors appearance-none"
-              >
-                <option value="" className="text-text-muted">I&apos;m a... (optional)</option>
-                <option value="player">Player</option>
-                <option value="parent">Parent</option>
-                <option value="coach">Coach</option>
-              </select>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
-                data-event="pricing_submit_waitlist"
-              >
-                {isSubmitting ? "Joining..." : "Join the Waitlist — Free"}
-              </button>
-            </form>
+              {/* Simplified Waitlist form */}
+              <div className="mt-auto">
+                <form onSubmit={handleWaitlistSubmit} className="space-y-3">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white placeholder-text-muted focus:border-accent-primary focus:outline-none transition-colors"
+                  />
+                  <select
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-bg-tertiary border border-white/10 text-white focus:border-accent-primary focus:outline-none transition-colors appearance-none"
+                  >
+                    <option value="" className="text-text-muted">I&apos;m a... (optional)</option>
+                    <option value="player">Player</option>
+                    <option value="parent">Parent</option>
+                    <option value="coach">Coach</option>
+                  </select>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary w-full text-center disabled:opacity-50 disabled:cursor-not-allowed"
+                    data-event="pricing_submit_waitlist"
+                  >
+                    {isSubmitting ? "Joining..." : "Join the Waitlist — Free"}
+                  </button>
+                </form>
 
-            {/* Reassurance */}
-            <p className="text-xs text-text-muted text-center mt-4">
-              No spam. We&apos;ll invite UK testers first.
-            </p>
+                {/* Reassurance */}
+                <p className="text-xs text-text-muted text-center mt-4">
+                  No spam. We&apos;ll invite UK testers first.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
